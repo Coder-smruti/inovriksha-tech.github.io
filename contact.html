@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700;800&family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
         :root {
             --primary: #14B8A6;
@@ -42,13 +43,7 @@
             from { opacity: 0; transform: translateY(50px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .animate-on-scroll { opacity: 0; }
-        .animate-on-scroll.animated {
-            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
+        .animate { animation: fadeInUp 0.8s ease-out; }
         .animated-background {
             position: fixed;
             top: 0;
@@ -152,7 +147,6 @@
         .page-header {
             padding: 12rem 3rem 6rem;
             text-align: center;
-            position: relative;
         }
         .page-badge {
             display: inline-block;
@@ -172,7 +166,7 @@
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 2rem;
-            background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, var(--white), var(--primary-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -347,7 +341,7 @@
             animation: fadeInUp 0.5s;
         }
         footer {
-            background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+            background: linear-gradient(180deg, var(--darker), var(--dark));
             padding: 6rem 3rem 3rem;
             border-top: 2px solid rgba(20, 184, 166, 0.2);
         }
@@ -469,20 +463,18 @@
     </nav>
     
     <header class="page-header">
-        <div class="page-header-content">
-            <div class="page-badge animate-on-scroll">GET IN TOUCH</div>
-            <h1 class="animate-on-scroll delay-100">Let's Build Something Amazing Together</h1>
-            <p class="animate-on-scroll delay-200">
-                Ready to transform your business? Get in touch with our team for a free consultation 
-                and discover how we can help you achieve your goals.
-            </p>
-        </div>
+        <div class="page-badge animate">GET IN TOUCH</div>
+        <h1 class="animate">Let's Build Something Amazing Together</h1>
+        <p class="animate">
+            Ready to transform your business? Get in touch with our team for a free consultation 
+            and discover how we can help you achieve your goals.
+        </p>
     </header>
     
     <section class="contact-section">
         <div class="contact-container">
             <div class="contact-info">
-                <div class="info-card animate-on-scroll">
+                <div class="info-card animate">
                     <div class="info-icon"><i class="fas fa-phone"></i></div>
                     <h3>Call Us</h3>
                     <p><a href="tel:+918658370065">+91 86583 70065</a></p>
@@ -492,16 +484,16 @@
                     </p>
                 </div>
                 
-                <div class="info-card animate-on-scroll delay-100">
+                <div class="info-card animate">
                     <div class="info-icon"><i class="fas fa-envelope"></i></div>
                     <h3>Email Us</h3>
-                    <p><a href="/cdn-cgi/l/email-protection#4c25222a230c2522233a3e25273f242d38292f24622f2321"><span class="__cf_email__" data-cfemail="660f080009260f080910140f0d150e071203050e4805090b">[email&#160;protected]</span></a></p>
+                    <p><a href="mailto:info@inovrikshatech.com">info@inovrikshatech.com</a></p>
                     <p style="margin-top: 1rem; color: var(--gray); font-size: 0.95rem;">
                         We respond within 24 hours
                     </p>
                 </div>
                 
-                <div class="info-card animate-on-scroll delay-200">
+                <div class="info-card animate">
                     <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                     <h3>Visit Us</h3>
                     <p>
@@ -513,7 +505,7 @@
                 </div>
             </div>
             
-            <div class="contact-form animate-on-scroll delay-100">
+            <div class="contact-form animate">
                 <h2 class="form-title">Send Us a Message</h2>
                 <form id="contactForm">
                     <div class="form-row">
@@ -614,7 +606,7 @@
             <div class="footer-links">
                 <h4>Contact</h4>
                 <ul>
-                    <li><a href="/cdn-cgi/l/email-protection#4a23242c250a2324253c38232139222b3e2f292264292527">Email Us</a></li>
+                    <li><a href="mailto:info@inovrikshatech.com">Email Us</a></li>
                     <li><a href="tel:+918658370065">+91 86583 70065</a></li>
                     <li><a href="careers.html">Careers</a></li>
                     <li><a href="contact.html">Get Quote</a></li>
@@ -627,20 +619,7 @@
         </div>
     </footer>
     
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('animated');
-                }
-            });
-        }
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
-        
+    <script>
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
@@ -667,13 +646,11 @@
             });
         });
         
-        // Form validation and submission
         const form = document.getElementById('contactForm');
         
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Track form submission in Google Analytics
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'form_submit', {
                     'event_category': 'Contact',
@@ -681,10 +658,8 @@
                 });
             }
             
-            // Reset errors
             document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
             
-            // Validate fields
             let isValid = true;
             
             const name = document.getElementById('name').value.trim();
@@ -723,18 +698,18 @@
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
                 
-                // Send email using formsubmit.co or similar service
-                const formData = new FormData();
-                formData.append('name', name);
-                formData.append('email', email);
-                formData.append('phone', phone);
-                formData.append('service', service);
-                formData.append('message', message);
-                
-                // You can replace this with your email service
-                // For now, just show success message
                 setTimeout(() => {
                     document.getElementById('successMessage').classList.add('show');
                     form.reset();
                     submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<span>Send Message</span><i c
+                    submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+                    
+                    setTimeout(() => {
+                        document.getElementById('successMessage').classList.remove('show');
+                    }, 5000);
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>
