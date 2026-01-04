@@ -3,116 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services | Inovriksha Tech - Premium Digital Solutions</title>
+    <title>Our Services | Inovriksha Tech Solutions</title>
     
-    <!-- Fonts -->
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N543N2EW1R"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-N543N2EW1R');
+    </script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700;800&family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         :root {
             --primary: #14B8A6;
             --primary-light: #2DD4BF;
-            --primary-dark: #0D9488;
             --secondary: #10B981;
-            --accent: #059669;
             --gold: #F59E0B;
-            --gold-light: #FCD34D;
             --dark: #0A1612;
             --darker: #050B09;
             --gray: #94A3B8;
             --light: #E0F2F1;
             --white: #FFFFFF;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Montserrat', sans-serif;
             background: var(--darker);
             color: var(--light);
             overflow-x: hidden;
         }
-        
-        /* Animations */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes zoomIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        .animate-on-scroll {
-            opacity: 0;
-        }
-        
-        .animate-on-scroll.animated {
-            animation-duration: 0.8s;
-            animation-fill-mode: both;
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .fade-up { animation-name: fadeInUp; }
-        .fade-left { animation-name: fadeInLeft; }
-        .fade-right { animation-name: fadeInRight; }
-        .zoom-in { animation-name: zoomIn; }
-        
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-        .delay-400 { animation-delay: 0.4s; }
-        .delay-500 { animation-delay: 0.5s; }
-        
-        /* Background */
+        .animate { animation: fadeInUp 0.8s ease-out; }
         .animated-background {
             position: fixed;
             top: 0;
@@ -120,50 +51,9 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: 
-                radial-gradient(ellipse at top, rgba(20, 184, 166, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at bottom right, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-                linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+            background: radial-gradient(ellipse at top, rgba(20, 184, 166, 0.15) 0%, transparent 50%),
+                        linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
         }
-        
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 50%;
-            opacity: 0;
-            animation: particleFloat 20s infinite;
-        }
-        
-        @keyframes particleFloat {
-            0% {
-                transform: translateY(100vh) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(100px);
-                opacity: 0;
-            }
-        }
-        
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -174,15 +64,13 @@
             background: rgba(10, 22, 18, 0.85);
             backdrop-filter: blur(30px);
             border-bottom: 1px solid rgba(20, 184, 166, 0.2);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s;
         }
-        
         nav.scrolled {
             padding: 1rem 0;
             background: rgba(10, 22, 18, 0.95);
             box-shadow: 0 10px 40px rgba(20, 184, 166, 0.1);
         }
-        
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -191,48 +79,31 @@
             justify-content: space-between;
             align-items: center;
         }
-        
         .logo {
             display: flex;
             align-items: center;
             gap: 1rem;
             text-decoration: none;
-            transition: all 0.3s ease;
         }
-        
-        .logo:hover {
-            transform: translateY(-3px);
-        }
-        
         .logo-img {
             width: 55px;
             height: 55px;
             filter: drop-shadow(0 0 20px rgba(20, 184, 166, 0.5));
-            transition: all 0.3s ease;
         }
-        
-        .logo:hover .logo-img {
-            filter: drop-shadow(0 0 30px rgba(20, 184, 166, 0.8));
-            transform: rotate(5deg);
-        }
-        
         .logo-text {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-light), var(--gold-light));
+            background: linear-gradient(135deg, var(--primary-light), var(--gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-        
         .nav-menu {
             display: flex;
             gap: 3rem;
             list-style: none;
             align-items: center;
         }
-        
         .nav-menu a {
             color: var(--light);
             text-decoration: none;
@@ -240,10 +111,8 @@
             font-size: 0.95rem;
             position: relative;
             padding: 0.5rem 0;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
+            transition: all 0.3s;
         }
-        
         .nav-menu a::after {
             content: '';
             position: absolute;
@@ -252,35 +121,19 @@
             width: 0;
             height: 2px;
             background: linear-gradient(90deg, var(--primary), var(--gold));
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             transform: translateX(-50%);
         }
-        
-        .nav-menu a:hover::after,
-        .nav-menu a.active::after {
-            width: 100%;
-        }
-        
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            color: var(--primary-light);
-        }
-        
+        .nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
+        .nav-menu a:hover, .nav-menu a.active { color: var(--primary-light); }
         .nav-cta {
             padding: 0.8rem 2rem;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: var(--dark);
             border-radius: 50px;
             font-weight: 700;
-            transition: all 0.3s ease;
             box-shadow: 0 5px 20px rgba(20, 184, 166, 0.3);
         }
-        
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(20, 184, 166, 0.5);
-        }
-        
         .mobile-toggle {
             display: none;
             background: none;
@@ -290,42 +143,11 @@
             padding: 0.5rem 1rem;
             cursor: pointer;
             border-radius: 8px;
-            transition: all 0.3s ease;
         }
-        
-        .mobile-toggle:hover {
-            background: var(--primary);
-            color: var(--dark);
-        }
-        
-        /* Page Header */
         .page-header {
             padding: 12rem 3rem 6rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
-        
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(20, 184, 166, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(80px);
-        }
-        
-        .page-header-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
         .page-badge {
             display: inline-block;
             padding: 0.6rem 1.8rem;
@@ -337,54 +159,45 @@
             font-weight: 700;
             margin-bottom: 2rem;
             letter-spacing: 2px;
-            text-transform: uppercase;
         }
-        
         .page-header h1 {
             font-family: 'Playfair Display', serif;
             font-size: 5rem;
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 2rem;
-            background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, var(--white), var(--primary-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-        
         .page-header p {
             font-size: 1.3rem;
             color: var(--gray);
             line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        
-        /* Services Grid */
         .services-section {
             padding: 6rem 3rem;
         }
-        
-        .services-container {
+        .section-container {
             max-width: 1400px;
             margin: 0 auto;
         }
-        
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
+            gap: 4rem;
         }
-        
         .service-card {
-            position: relative;
-            background: linear-gradient(135deg, rgba(20, 184, 166, 0.05) 0%, rgba(16, 185, 129, 0.02) 100%);
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(16, 185, 129, 0.02));
             border: 2px solid rgba(20, 184, 166, 0.2);
             border-radius: 30px;
-            padding: 3rem;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 4rem 3rem;
+            transition: all 0.5s;
+            position: relative;
             overflow: hidden;
         }
-        
         .service-card::before {
             content: '';
             position: absolute;
@@ -395,198 +208,89 @@
             background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.1), transparent);
             transition: left 0.8s;
         }
-        
         .service-card:hover::before {
             left: 100%;
         }
-        
         .service-card:hover {
-            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(16, 185, 129, 0.05));
             border-color: var(--primary);
-            transform: translateY(-10px);
+            transform: translateY(-15px);
             box-shadow: 0 25px 60px rgba(20, 184, 166, 0.3);
         }
-        
-        .service-header {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
         .service-icon {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 20px;
+            border-radius: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            color: var(--dark);
-            transition: all 0.4s ease;
-            flex-shrink: 0;
+            margin-bottom: 2.5rem;
+            transition: all 0.5s;
         }
-        
         .service-card:hover .service-icon {
             transform: rotate(10deg) scale(1.1);
             box-shadow: 0 15px 40px rgba(20, 184, 166, 0.5);
         }
-        
-        .service-header h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            color: var(--white);
-            transition: all 0.3s ease;
+        .service-icon i {
+            font-size: 3.5rem;
+            color: var(--dark);
         }
-        
+        .service-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
         .service-card:hover h3 {
             color: var(--primary-light);
         }
-        
         .service-description {
-            color: var(--gray);
+            color: var(--light);
             line-height: 1.8;
             margin-bottom: 2rem;
-            font-size: 1.05rem;
-        }
-        
-        .service-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        
-        .service-features li {
-            padding: 0.8rem 0;
-            color: var(--light);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            border-bottom: 1px solid rgba(20, 184, 166, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .service-features li:last-child {
-            border-bottom: none;
-        }
-        
-        .service-features li:hover {
-            padding-left: 1rem;
-            color: var(--primary-light);
-        }
-        
-        .service-features li i {
-            color: var(--primary);
             font-size: 1.1rem;
         }
-        
-        .service-cta {
+        .service-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+        .service-features li {
+            padding: 1rem 0;
+            color: var(--light);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            border-bottom: 1px solid rgba(20, 184, 166, 0.1);
+        }
+        .service-features li i {
+            color: var(--primary);
+            margin-top: 0.3rem;
+            font-size: 1.1rem;
+        }
+        .service-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.8rem;
-            padding: 1rem 2rem;
-            background: rgba(20, 184, 166, 0.1);
-            border: 2px solid var(--primary);
-            border-radius: 50px;
-            color: var(--primary-light);
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s ease;
-        }
-        
-        .service-cta:hover {
-            background: var(--primary);
+            gap: 1rem;
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: var(--dark);
-            transform: translateX(5px);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s;
             box-shadow: 0 10px 30px rgba(20, 184, 166, 0.4);
         }
-        
-        /* CTA Section */
-        .cta-section {
-            padding: 6rem 3rem;
-            text-align: center;
-        }
-        
-        .cta-box {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 5rem 4rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta-box::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .cta-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .cta-box h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: var(--dark);
-            margin-bottom: 1.5rem;
-            font-weight: 900;
-        }
-        
-        .cta-box p {
-            color: var(--dark);
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-        }
-        
-        .btn {
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: all 0.4s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            cursor: pointer;
-            border: none;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .btn-dark {
-            background: var(--dark);
-            color: var(--white);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .btn-dark:hover {
-            background: var(--darker);
+        .service-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 15px 40px rgba(20, 184, 166, 0.6);
         }
-        
-        /* Footer */
         footer {
-            background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+            background: linear-gradient(180deg, var(--darker), var(--dark));
             padding: 6rem 3rem 3rem;
             border-top: 2px solid rgba(20, 184, 166, 0.2);
         }
-        
         .footer-content {
             max-width: 1400px;
             margin: 0 auto 4rem;
@@ -594,25 +298,18 @@
             grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 4rem;
         }
-        
         .footer-about h3 {
             font-family: 'Orbitron', sans-serif;
             color: var(--primary-light);
             margin-bottom: 1.5rem;
             font-size: 1.5rem;
         }
-        
         .footer-about p {
             color: var(--gray);
             line-height: 1.8;
             margin-bottom: 2rem;
         }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-        
+        .social-links { display: flex; gap: 1rem; }
         .social-link {
             width: 50px;
             height: 50px;
@@ -624,42 +321,29 @@
             justify-content: center;
             color: var(--primary);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
-        
         .social-link:hover {
             background: var(--primary);
             color: var(--dark);
             transform: translateY(-5px) rotate(360deg);
-            box-shadow: 0 10px 30px rgba(20, 184, 166, 0.4);
         }
-        
         .footer-links h4 {
             color: var(--white);
             margin-bottom: 1.5rem;
-            font-size: 1.1rem;
         }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 1rem;
-        }
-        
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 1rem; }
         .footer-links a {
             color: var(--gray);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             display: inline-block;
         }
-        
         .footer-links a:hover {
             color: var(--primary-light);
             transform: translateX(5px);
         }
-        
         .footer-bottom {
             max-width: 1400px;
             margin: 0 auto;
@@ -668,54 +352,6 @@
             text-align: center;
             color: var(--gray);
         }
-        
-        /* Scroll to Top */
-        .scroll-top {
-            position: fixed;
-            bottom: 3rem;
-            right: 3rem;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark);
-            font-size: 1.5rem;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 999;
-            box-shadow: 0 10px 30px rgba(20, 184, 166, 0.4);
-        }
-        
-        .scroll-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .scroll-top:hover {
-            transform: translateY(-5px) rotate(360deg);
-            box-shadow: 0 15px 40px rgba(20, 184, 166, 0.6);
-        }
-        
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .page-header h1 {
-                font-size: 4rem;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        
         @media (max-width: 768px) {
             .nav-menu {
                 position: fixed;
@@ -728,46 +364,20 @@
                 padding: 2rem;
                 gap: 1.5rem;
                 transform: translateX(-100%);
-                transition: transform 0.4s ease;
-                border-bottom: 2px solid rgba(20, 184, 166, 0.3);
+                transition: transform 0.4s;
             }
-            
-            .nav-menu.active {
-                transform: translateX(0);
-            }
-            
-            .mobile-toggle {
-                display: block;
-            }
-            
-            .page-header {
-                padding: 8rem 2rem 4rem;
-            }
-            
-            .page-header h1 {
-                font-size: 3rem;
-            }
-            
-            .services-section {
-                padding: 4rem 2rem;
-            }
-            
-            .cta-box h2 {
-                font-size: 2.5rem;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
+            .nav-menu.active { transform: translateX(0); }
+            .mobile-toggle { display: block; }
+            .page-header { padding: 8rem 2rem 4rem; }
+            .page-header h1 { font-size: 3rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Background -->
     <div class="animated-background"></div>
-    <div class="particles" id="particles"></div>
     
-    <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
@@ -788,157 +398,140 @@
         </div>
     </nav>
     
-    <!-- Page Header -->
     <header class="page-header">
-        <div class="page-header-content">
-            <div class="page-badge animate-on-scroll fade-up">OUR SERVICES</div>
-            <h1 class="animate-on-scroll fade-up delay-100">Comprehensive Digital Solutions</h1>
-            <p class="animate-on-scroll fade-up delay-200">
-                From AI automation to hospitality tech, we deliver cutting-edge solutions 
-                that transform businesses and drive exponential growth.
-            </p>
-        </div>
+        <div class="page-badge animate">OUR EXPERTISE</div>
+        <h1 class="animate">Comprehensive Digital Solutions</h1>
+        <p class="animate">
+            From AI automation to hospitality management, we offer cutting-edge services 
+            that transform businesses and drive exponential growth.
+        </p>
     </header>
     
-    <!-- Services Section -->
     <section class="services-section">
-        <div class="services-container">
+        <div class="section-container">
             <div class="services-grid">
-                <!-- Website Development & SEO -->
-                <div class="service-card animate-on-scroll fade-up">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <h3>Website Development & SEO</h3>
+                <div class="service-card animate">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
                     </div>
+                    <h3>Web Development & SEO</h3>
                     <p class="service-description">
-                        Create stunning, high-performance websites optimized for search engines and exceptional user experience. We build responsive, fast, and conversion-focused websites.
+                        Build stunning, high-performance websites with integrated SEO strategies 
+                        that drive traffic and convert visitors into customers.
                     </p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Custom Web Design & Development</li>
-                        <li><i class="fas fa-check-circle"></i> SEO Optimization & Strategy</li>
-                        <li><i class="fas fa-check-circle"></i> Responsive & Mobile-First Design</li>
-                        <li><i class="fas fa-check-circle"></i> Performance Tuning & Speed Optimization</li>
-                        <li><i class="fas fa-check-circle"></i> Content Management Systems</li>
+                        <li><i class="fas fa-check-circle"></i> Custom responsive website design & development</li>
+                        <li><i class="fas fa-check-circle"></i> Advanced SEO optimization & content strategy</li>
+                        <li><i class="fas fa-check-circle"></i> Performance optimization & speed enhancement</li>
+                        <li><i class="fas fa-check-circle"></i> E-commerce integrations & payment gateways</li>
+                        <li><i class="fas fa-check-circle"></i> Regular maintenance & technical support</li>
                     </ul>
-                    <a href="contact.html" class="service-cta">
+                    <a href="contact.html" class="service-btn">
                         Get Started <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
                 
-                <!-- E-Commerce Operations -->
-                <div class="service-card animate-on-scroll fade-up delay-100">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <h3>E-Commerce Operations</h3>
+                <div class="service-card animate">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
                     </div>
+                    <h3>E-Commerce Operations</h3>
                     <p class="service-description">
-                        End-to-end e-commerce solutions to scale your online business. From product management to growth optimization, we handle it all.
+                        Complete e-commerce solutions from store setup to order fulfillment, 
+                        helping you sell more and manage operations efficiently.
                     </p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Product Listing & Catalog Management</li>
-                        <li><i class="fas fa-check-circle"></i> Inventory Sync & Automation</li>
-                        <li><i class="fas fa-check-circle"></i> Order Management System</li>
-                        <li><i class="fas fa-check-circle"></i> Customer Support Automation</li>
-                        <li><i class="fas fa-check-circle"></i> Store Growth & Performance Optimization</li>
+                        <li><i class="fas fa-check-circle"></i> Full store setup on Shopify, WooCommerce, Magento</li>
+                        <li><i class="fas fa-check-circle"></i> Product catalog management & optimization</li>
+                        <li><i class="fas fa-check-circle"></i> Payment gateway & shipping integration</li>
+                        <li><i class="fas fa-check-circle"></i> Inventory management systems</li>
+                        <li><i class="fas fa-check-circle"></i> Order processing & customer service automation</li>
                     </ul>
-                    <a href="contact.html" class="service-cta">
+                    <a href="contact.html" class="service-btn">
                         Get Started <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
                 
-                <!-- AI & Automation -->
-                <div class="service-card animate-on-scroll fade-up delay-200">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <h3>AI & Automation Excellence</h3>
+                <div class="service-card animate">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
                     </div>
+                    <h3>AI & Automation</h3>
                     <p class="service-description">
-                        Leverage AI chatbots and intelligent automation to transform your operations and enhance customer experiences.
+                        Leverage artificial intelligence and automation to streamline operations, 
+                        reduce costs, and unlock new possibilities for your business.
                     </p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> AI Chatbot Development</li>
-                        <li><i class="fas fa-check-circle"></i> WhatsApp Business Automation</li>
-                        <li><i class="fas fa-check-circle"></i> Excel & Spreadsheet Automation</li>
-                        <li><i class="fas fa-check-circle"></i> Business Process Automation</li>
-                        <li><i class="fas fa-check-circle"></i> Email Marketing Automation</li>
+                        <li><i class="fas fa-check-circle"></i> AI chatbots & virtual assistants</li>
+                        <li><i class="fas fa-check-circle"></i> Process automation & workflow optimization</li>
+                        <li><i class="fas fa-check-circle"></i> Machine learning model development</li>
+                        <li><i class="fas fa-check-circle"></i> Intelligent data processing & analysis</li>
+                        <li><i class="fas fa-check-circle"></i> Custom AI solutions for specific needs</li>
                     </ul>
-                    <a href="contact.html" class="service-cta">
+                    <a href="contact.html" class="service-btn">
                         Get Started <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
                 
-                <!-- ERP & Cloud -->
-                <div class="service-card animate-on-scroll fade-up delay-300">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h3>ERP, Cloud & IT Support</h3>
+                <div class="service-card animate">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
                     </div>
+                    <h3>ERP & Cloud Solutions</h3>
                     <p class="service-description">
-                        Custom enterprise solutions for efficient operations and seamless digital transformation with expert technical support.
+                        Implement powerful ERP systems and cloud infrastructure to unify 
+                        operations, improve efficiency, and scale your business seamlessly.
                     </p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Frappe / ERPNext Development</li>
-                        <li><i class="fas fa-check-circle"></i> ERP Implementation & Custom Modules</li>
-                        <li><i class="fas fa-check-circle"></i> Cloud Setup & Server Management</li>
-                        <li><i class="fas fa-check-circle"></i> Backup & Security Setup</li>
-                        <li><i class="fas fa-check-circle"></i> IT Consulting & Tech Support</li>
+                        <li><i class="fas fa-check-circle"></i> Custom ERP implementation & integration</li>
+                        <li><i class="fas fa-check-circle"></i> Cloud migration & infrastructure setup</li>
+                        <li><i class="fas fa-check-circle"></i> Business process management systems</li>
+                        <li><i class="fas fa-check-circle"></i> Data security & backup solutions</li>
+                        <li><i class="fas fa-check-circle"></i> System training & ongoing support</li>
                     </ul>
-                    <a href="contact.html" class="service-cta">
+                    <a href="contact.html" class="service-btn">
                         Get Started <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
                 
-                <!-- Data & Analytics -->
-                <div class="service-card animate-on-scroll fade-up delay-400">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h3>Data & Analytics</h3>
+                <div class="service-card animate">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
+                    <h3>Data & Analytics</h3>
                     <p class="service-description">
-                        Transform data into actionable insights with advanced analytics, reporting dashboards, and predictive intelligence.
+                        Turn data into actionable insights with advanced analytics, visualization, 
+                        and business intelligence solutions that drive informed decisions.
                     </p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Data Analytics & Visualization</li>
-                        <li><i class="fas fa-check-circle"></i> Custom Reporting Dashboards</li>
-                        <li><i class="fas fa-check-circle"></i> Insights & Predictive Analytics</li>
-                        <li><i class="fas fa-check-circle"></i> Business Intelligence Solutions</li>
-                        <li><i class="fas fa-check-circle"></i> KPI Tracking & Monitoring</li>
+                        <li><i class="fas fa-check-circle"></i> Business intelligence & reporting dashboards</li>
+                        <li><i class="fas fa-check-circle"></i> Data warehousing & ETL processes</li>
+                        <li><i class="fas fa-check-circle"></i> Predictive analytics & forecasting</li>
+                        <li><i class="fas fa-check-circle"></i> Custom data visualization solutions</li>
+                        <li><i class="fas fa-check-circle"></i> Real-time monitoring & alerting systems</li>
                     </ul>
-                    <a href="contact.html" class="service-cta">
+                    <a href="contact.html" class="service-btn">
                         Get Started <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
                 
-                <!-- Hospitality Management -->
-                <div class="service-card animate-on-scroll fade-up delay-500">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-hotel"></i>
-                        </div>
-                        <h3>Hospitality Management</h3>
+                <div class="service-card animate">
+                    <div class="service-icon">
+                        <i class="fas fa-hotel"></i>
                     </div>
+                    <h3>Hospitality Management</h3>
                     <p class="service-description">
-                        Complete digital solutions for hotels, resorts, villas, and homestays. Boost bookings and automate operations.
+                        Comprehensive technology solutions for hotels, restaurants, and hospitality 
+                        businesses to enhance guest experiences and operations.
                     </p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Hotel & Villa Website Setup</li>
-                        <li><i class="fas fa-check-circle"></i> Booking System Integration</li>
-                        <li><i class="fas fa-check-circle"></i> OTA Setup (Booking.com, Airbnb, Agoda)</li>
-                        <li><i class="fas fa-check-circle"></i> Google Travel Setup</li>
-                        <li><i class="fas fa-check-circle"></i> WhatsApp Auto-Reply System</li>
-                        <li><i class="fas fa-check-circle"></i> Guest Communication Automation</li>
+                        <li><i class="fas fa-check-circle"></i> Property management systems (PMS)</li>
+                        <li><i class="fas fa-check-circle"></i> Online booking & reservation platforms</li>
+                        <li><i class="fas fa-check-circle"></i> Point-of-sale (POS) systems</li>
+                        <li><i class="fas fa-check-circle"></i> Guest experience & CRM solutions</li>
+                        <li><i class="fas fa-check-circle"></i> Revenue management & analytics</li>
                     </ul>
-                    <a href="contact.html" class="service-cta">
+                    <a href="contact.html" class="service-btn">
                         Get Started <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -946,21 +539,6 @@
         </div>
     </section>
     
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-box animate-on-scroll zoom-in">
-            <div class="cta-content">
-                <h2>Ready to Transform Your Business?</h2>
-                <p>Let's build something powerful together. Get in touch for a free consultation.</p>
-                <a href="contact.html" class="btn btn-dark">
-                    <span>Contact Us Today</span>
-                    <i class="fas fa-paper-plane"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-about">
@@ -1002,7 +580,7 @@
             <div class="footer-links">
                 <h4>Contact</h4>
                 <ul>
-                    <li><a href="/cdn-cgi/l/email-protection#87eee9e1e8c7eee9e8f1f5eeecf4efe6f3e2e4efa9e4e8ea">Email Us</a></li>
+                    <li><a href="mailto:info@inovrikshatech.com">Email Us</a></li>
                     <li><a href="tel:+918658370065">+91 86583 70065</a></li>
                     <li><a href="careers.html">Careers</a></li>
                     <li><a href="contact.html">Get Quote</a></li>
@@ -1015,46 +593,7 @@
         </div>
     </footer>
     
-    <!-- Scroll to Top -->
-    <div class="scroll-top" id="scrollTop">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-    
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Create particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-                particlesContainer.appendChild(particle);
-            }
-        }
-        createParticles();
-        
-        // Scroll animations
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('animated');
-                }
-            });
-        }
-        
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
-        
-        // Navbar scroll effect
+    <script>
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
@@ -1064,10 +603,8 @@
             }
         });
         
-        // Mobile menu toggle
         const mobileToggle = document.getElementById('mobileToggle');
         const navMenu = document.getElementById('navMenu');
-        
         mobileToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             const icon = mobileToggle.querySelector('i');
@@ -1082,16 +619,6 @@
                 mobileToggle.querySelector('i').classList.remove('fa-times');
             });
         });
-        
-        // Scroll to top button
-        const scrollTop = document.getElementById('scrollTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                scrollTop.classList.add('visible');
-            } else {
-                scrollTop.classList.remove('visible');
-            }
-        });
-        
-        scrollTop.addEventListener('click', (
+    </script>
+</body>
+</html>
