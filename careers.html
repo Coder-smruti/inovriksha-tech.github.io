@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | Join Inovriksha Tech Team</title>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N543N2EW1R"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-N543N2EW1R');
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700;800&family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #14B8A6;
+            --primary-light: #2DD4BF;
+            --secondary: #10B981;
+            --gold: #F59E0B;
+            --dark: #0A1612;
+            --darker: #050B09;
+            --gray: #94A3B8;
+            --light: #E0F2F1;
+            --white: #FFFFFF;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-on-scroll { opacity: 0; }
+        .animate-on-scroll.animated {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at top, rgba(20, 184, 166, 0.15) 0%, transparent 50%),
+                        linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            background: rgba(10, 22, 18, 0.85);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(20, 184, 166, 0.2);
+            transition: all 0.4s;
+        }
+        nav.scrolled {
+            padding: 1rem 0;
+            background: rgba(10, 22, 18, 0.95);
+            box-shadow: 0 10px 40px rgba(20, 184, 166, 0.1);
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+        .logo-img {
+            width: 55px;
+            height: 55px;
+            filter: drop-shadow(0 0 20px rgba(20, 184, 166, 0.5));
+        }
+        .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-menu a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s;
+        }
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--gold));
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+        .nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
+        .nav-menu a:hover, .nav-menu a.active { color: var(--primary-light); }
+        .nav-cta {
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 0 5px 20px rgba(20, 184, 166, 0.3);
+        }
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            font-size: 1.5rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        .page-header {
+            padding: 12rem 3rem 6rem;
+            text-align: center;
+            position: relative;
+        }
+        .page-badge {
+            display: inline-block;
+            padding: 0.6rem 1.8rem;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid var(--gold);
+            border-radius: 50px;
+            color: var(--gold);
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .page-header p {
+            font-size: 1.3rem;
+            color: var(--gray);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .benefits-section, .jobs-section {
+            padding: 6rem 3rem;
+        }
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        .benefit-card {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(16, 185, 129, 0.02));
+            border: 2px solid rgba(20, 184, 166, 0.2);
+            border-radius: 25px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.4s;
+        }
+        .benefit-card:hover {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(16, 185, 129, 0.05));
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(20, 184, 166, 0.3);
+        }
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin: 0 auto 2rem;
+        }
+        .benefit-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        .benefit-card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        .job-card {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(16, 185, 129, 0.02));
+            border: 2px solid rgba(20, 184, 166, 0.2);
+            border-radius: 30px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            transition: all 0.5s;
+        }
+        .job-card:hover {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(16, 185, 129, 0.05));
+            border-color: var(--primary);
+            transform: translateX(10px);
+            box-shadow: 0 25px 60px rgba(20, 184, 166, 0.3);
+        }
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .job-title h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-light);
+            margin-bottom: 0.5rem;
+        }
+        .job-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray);
+        }
+        .meta-item i { color: var(--primary); }
+        .job-badge {
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .job-badge.new {
+            background: linear-gradient(135deg, var(--gold), #FCD34D);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .job-description {
+            color: var(--light);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        .job-section-title {
+            color: var(--primary-light);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem;
+        }
+        .job-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        .job-list li {
+            padding: 1rem 0;
+            color: var(--light);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            border-bottom: 1px solid rgba(20, 184, 166, 0.1);
+        }
+        .job-list li i {
+            color: var(--primary);
+            margin-top: 0.3rem;
+        }
+        .apply-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(20, 184, 166, 0.4);
+        }
+        .apply-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(20, 184, 166, 0.6);
+        }
+        footer {
+            background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+            padding: 6rem 3rem 3rem;
+            border-top: 2px solid rgba(20, 184, 166, 0.2);
+        }
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+        }
+        .footer-about h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        .footer-about p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        .social-links { display: flex; gap: 1rem; }
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(20, 184, 166, 0.1);
+            border: 2px solid rgba(20, 184, 166, 0.3);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .social-link:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-5px) rotate(360deg);
+        }
+        .footer-links h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 1rem; }
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        .footer-links a:hover {
+            color: var(--primary-light);
+            transform: translateX(5px);
+        }
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(20, 184, 166, 0.2);
+            text-align: center;
+            color: var(--gray);
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 90px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 22, 18, 0.98);
+                backdrop-filter: blur(30px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateX(-100%);
+                transition: transform 0.4s;
+            }
+            .nav-menu.active { transform: translateX(0); }
+            .mobile-toggle { display: block; }
+            .page-header { padding: 8rem 2rem 4rem; }
+            .page-header h1 { font-size: 3rem; }
+            .footer-content { grid-template-columns: 1fr; }
+            .job-header { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-background"></div>
+    
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo_Invo.png" alt="Inovriksha Tech" class="logo-img">
+                <span class="logo-text">INOVRIKSHA</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="careers.html" class="active">Careers</a></li>
+                <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <header class="page-header">
+        <div class="page-header-content">
+            <div class="page-badge animate-on-scroll">JOIN OUR TEAM</div>
+            <h1 class="animate-on-scroll delay-100">Build Your Future With Us</h1>
+            <p class="animate-on-scroll delay-200">
+                Join a team of passionate innovators working on cutting-edge technology. 
+                We're looking for talented individuals ready to make an impact.
+            </p>
+        </div>
+    </header>
+    
+    <section class="benefits-section">
+        <div class="section-container">
+            <div class="section-title">
+                <h2 class="animate-on-scroll">Why Work With Us</h2>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Innovation First</h3>
+                    <p>Work on cutting-edge projects with latest technologies and make real impact.</p>
+                </div>
+                
+                <div class="benefit-card animate-on-scroll delay-100">
+                    <div class="benefit-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Learning & Growth</h3>
+                    <p>Continuous learning opportunities, mentorship, and skill development programs.</p>
+                </div>
+                
+                <div class="benefit-card animate-on-scroll delay-200">
+                    <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                    <h3>Great Team</h3>
+                    <p>Collaborative environment with talented, supportive, and passionate colleagues.</p>
+                </div>
+                
+                <div class="benefit-card animate-on-scroll delay-300">
+                    <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Work-Life Balance</h3>
+                    <p>Flexible hours, remote options, and focus on employee wellbeing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="jobs-section">
+        <div class="section-container">
+            <div class="section-title">
+                <h2 class="animate-on-scroll">Current Openings</h2>
+            </div>
+            
+            <!-- HR Intern -->
+            <div class="job-card animate-on-scroll">
+                <div class="job-header">
+                    <div class="job-title">
+                        <h3>HR Intern</h3>
+                        <div class="job-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Bhubaneswar, Odisha</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-briefcase"></i>
+                                <span>Internship</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>3-6 months</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-badge">OPEN</div>
+                </div>
+                
+                <p class="job-description">
+                    We're looking for an enthusiastic HR Intern to join our growing team. This role offers 
+                    hands-on experience in recruitment, employee engagement, and HR operations.
+                </p>
+                
+                <h4 class="job-section-title">Key Responsibilities</h4>
+                <ul class="job-list">
+                    <li><i class="fas fa-check-circle"></i> Screen and organize candidate profiles from various job portals</li>
+                    <li><i class="fas fa-check-circle"></i> Schedule and coordinate interviews with candidates</li>
+                    <li><i class="fas fa-check-circle"></i> Maintain and update HR documentation and records</li>
+                    <li><i class="fas fa-check-circle"></i> Assist with employee onboarding and orientation process</li>
+                    <li><i class="fas fa-check-circle"></i> Support HR team with recruitment drives and campaigns</li>
+                </ul>
+                
+                <h4 class="job-section-title">Requirements</h4>
+                <ul class="job-list">
+                    <li><i class="fas fa-check-circle"></i> Currently pursuing or recently completed degree in HR, Business, or related field</li>
+                    <li><i class="fas fa-check-circle"></i> Excellent communication and interpersonal skills</li>
+                    <li><i class="fas fa-check-circle"></i> Good organizational and time management abilities</li>
+                    <li><i class="fas fa-check-circle"></i> Proficiency in MS Office (Word, Excel, PowerPoint)</li>
+                </ul>
+                
+                <a href="https://forms.gle/GLmx4YMQeweEGEuT7" target="_blank" class="apply-btn" onclick="gtag('event', 'click', {'event_category': 'Careers', 'event_label': 'HR Intern Apply'});">
+                    Apply Now <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <!-- Remote Operations & Data Support Executive -->
+            <div class="job-card animate-on-scroll delay-100">
+                <div class="job-header">
+                    <div class="job-title">
+                        <h3>Remote Operations & Data Support Executive</h3>
+                        <div class="job-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-home"></i>
+                                <span>Remote</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-briefcase"></i>
+                                <span>Full-Time</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Flexible Hours</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-badge new">NEW</div>
+                </div>
+                
+                <p class="job-description">
+                    Inovriksha Tech Pvt Ltd is looking for a motivated Remote Operations & Data Support Executive 
+                    who wants to learn, grow, and work hands-on with our core team.
+                </p>
+                
+                <h4 class="job-section-title">Key Responsibilities</h4>
+                <ul class="job-list">
+                    <li><i class="fas fa-check-circle"></i> Manage and maintain operational data systems</li>
+                    <li><i class="fas fa-check-circle"></i> Support team with data entry, organization, and reporting</li>
+                    <li><i class="fas fa-check-circle"></i> Assist in process documentation and improvement initiatives</li>
+                    <li><i class="fas fa-check-circle"></i> Coordinate with team members on various operational tasks</li>
+                    <li><i class="fas fa-check-circle"></i> Provide remote support for business operations</li>
+                    <li><i class="fas fa-check-circle"></i> Help maintain quality standards and efficiency</li>
+                </ul>
+                
+                <h4 class="job-section-title">Requirements</h4>
+                <ul class="job-list">
+                    <li><i class="fas fa-check-circle"></i> Strong organizational and multitasking skills</li>
+                    <li><i class="fas fa-check-circle"></i> Proficiency in MS Office and Google Workspace</li>
+                    <li><i class="fas fa-check-circle"></i> Good communication skills (written and verbal)</li>
+                    <li><i class="fas fa-check-circle"></i> Self-motivated and able to work independently</li>
+                    <li><i class="fas fa-check-circle"></i> Attention to detail and accuracy</li>
+                    <li><i class="fas fa-check-circle"></i> Reliable internet connection for remote work</li>
+                </ul>
+                
+                <a href="https://forms.gle/bCH3GqcHppoRjnx47" target="_blank" class="apply-btn" onclick="gtag('event', 'click', {'event_category': 'Careers', 'event_label': 'Remote Operations Apply'});">
+                    Apply Now <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <!-- Business Development Intern -->
+            <div class="job-card animate-on-scroll delay-200">
+                <div class="job-header">
+                    <div class="job-title">
+                        <h3>Business Development Intern</h3>
+                        <div class="job-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Bhubaneswar, Odisha</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-briefcase"></i>
+                                <span>Internship</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>3-6 months</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-badge">OPEN</div>
+                </div>
+                
+                <p class="job-description">
+                    Join our Business Development team to gain experience in lead generation, client engagement, 
+                    and business growth strategies in the tech industry.
+                </p>
+                
+                <h4 class="job-section-title">Key Responsibilities</h4>
+                <ul class="job-list">
+                    <li><i class="fas fa-check-circle"></i> Identify and generate leads through various channels</li>
+                    <li><i class="fas fa-check-circle"></i> Conduct market research and competitor analysis</li>
+                    <li><i class="fas fa-check-circle"></i> Assist in client communication and proposal preparation</li>
+                    <li><i class="fas fa-check-circle"></i> Maintain and update CRM database with client information</li>
+                    <li><i class="fas fa-check-circle"></i> Support team in preparing presentations and documentation</li>
+                    <li><i class="fas fa-check-circle"></i> Follow up with potential clients and schedule meetings</li>
+                </ul>
+                
+                <h4 class="job-section-title">Requirements</h4>
+                <ul class="job-list">
+                    <li><i class="fas fa-check-circle"></i> Currently pursuing or completed degree in Business, Marketing, or related field</li>
+                    <li><i class="fas fa-check-circle"></i> Excellent verbal and written communication skills</li>
+                    <li><i class="fas fa-check-circle"></i> Self-motivated with strong work ethic</li>
+                    <li><i class="fas fa-check-circle"></i> Basic understanding of digital marketing and social media</li>
+                    <li><i class="fas fa-check-circle"></i> Comfortable with cold calling and client outreach</li>
+                </ul>
+                
+                <a href="https://forms.gle/3VbtnegZf26fhv7V8" target="_blank" class="apply-btn" onclick="gtag('event', 'click', {'event_category': 'Careers', 'event_label': 'Business Development Apply'});">
+                    Apply Now <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>Inovriksha Tech</h3>
+                <p>At Inovriksha Tech, we believe in innovation, creativity, and growth from the roots. We help businesses transform through cutting-edge technology and strategic digital solutions.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/company/inovriksha-tech-pvt-ltd/" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.instagram.com/inovriksha_tech/" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/InovrikshaTech" target="_blank" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services.html">Web Development</a></li>
+                    <li><a href="services.html">AI & Automation</a></li>
+                    <li><a href="services.html">E-Commerce</a></li>
+                    <li><a href="services.html">Hospitality Tech</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="/cdn-cgi/l/email-protection#5c35323a331c3532332a2e35372f343d28393f34723f3331">Email Us</a></li>
+                    <li><a href="tel:+918658370065">+91 86583 70065</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Get Quote</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Inovriksha Tech Pvt Ltd. All Rights Reserved. | Innovating from the Roots, Scaling to the Future</p>
+        </div>
+    </footer>
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('animated');
+                }
+            });
+        }
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+        
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+        
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileToggle.querySelector('i').classLis
