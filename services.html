@@ -352,7 +352,14 @@
             text-align: center;
             color: var(--gray);
         }
+        @media (max-width: 1024px) {
+            .services-grid { 
+                grid-template-columns: 1fr;
+            }
+        }
+        
         @media (max-width: 768px) {
+            .nav-container { padding: 0 1.5rem; }
             .nav-menu {
                 position: fixed;
                 top: 90px;
@@ -368,10 +375,64 @@
             }
             .nav-menu.active { transform: translateX(0); }
             .mobile-toggle { display: block; }
-            .page-header { padding: 8rem 2rem 4rem; }
-            .page-header h1 { font-size: 3rem; }
-            .services-grid { grid-template-columns: 1fr; }
-            .footer-content { grid-template-columns: 1fr; }
+            .page-header { padding: 8rem 1.5rem 4rem; }
+            .page-header h1 { 
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            .page-header p { font-size: 1.1rem; }
+            .page-badge {
+                font-size: 0.8rem;
+                padding: 0.5rem 1.5rem;
+            }
+            .services-section { padding: 4rem 1.5rem; }
+            .services-grid { 
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .service-card {
+                padding: 2.5rem 2rem;
+            }
+            .service-icon {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 2rem;
+            }
+            .service-icon i { font-size: 2.5rem; }
+            .service-card h3 { 
+                font-size: 1.6rem;
+                margin-bottom: 1rem;
+            }
+            .service-description { 
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            .service-features li {
+                padding: 0.75rem 0;
+                font-size: 0.95rem;
+            }
+            .service-btn {
+                padding: 1rem 2rem;
+                font-size: 0.95rem;
+                width: 100%;
+                justify-content: center;
+            }
+            footer { padding: 4rem 1.5rem 2rem; }
+            .footer-content { 
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text { font-size: 1.2rem; }
+            .logo-img { width: 45px; height: 45px; }
+            .page-header h1 { font-size: 2rem; }
+            .page-header p { font-size: 1rem; }
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+            .service-card h3 { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -580,7 +641,7 @@
             <div class="footer-links">
                 <h4>Contact</h4>
                 <ul>
-                    <li><a href="mailto:info@inovrikshatech.com">Email Us</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#31585f575e71585f5e4743585a425950455452591f525e5c">Email Us</a></li>
                     <li><a href="tel:+918658370065">+91 86583 70065</a></li>
                     <li><a href="careers.html">Careers</a></li>
                     <li><a href="contact.html">Get Quote</a></li>
@@ -593,7 +654,7 @@
         </div>
     </footer>
     
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
@@ -615,10 +676,4 @@
         navMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
-                mobileToggle.querySelector('i').classList.add('fa-bars');
-                mobileToggle.querySelector('i').classList.remove('fa-times');
-            });
-        });
-    </script>
-</body>
-</html>
+                mobileToggle.querySelector('i').classLis
