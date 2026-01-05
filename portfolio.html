@@ -3,116 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Inovriksha Tech - Our Work & Success Stories</title>
+    <title>Portfolio | Inovriksha Tech Projects</title>
     
-    <!-- Fonts -->
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N543N2EW1R"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-N543N2EW1R');
+    </script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700;800&family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         :root {
             --primary: #14B8A6;
             --primary-light: #2DD4BF;
-            --primary-dark: #0D9488;
             --secondary: #10B981;
-            --accent: #059669;
             --gold: #F59E0B;
-            --gold-light: #FCD34D;
             --dark: #0A1612;
             --darker: #050B09;
             --gray: #94A3B8;
             --light: #E0F2F1;
             --white: #FFFFFF;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Montserrat', sans-serif;
             background: var(--darker);
             color: var(--light);
             overflow-x: hidden;
         }
-        
-        /* Animations */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes zoomIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        .animate-on-scroll {
-            opacity: 0;
-        }
-        
-        .animate-on-scroll.animated {
-            animation-duration: 0.8s;
-            animation-fill-mode: both;
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .fade-up { animation-name: fadeInUp; }
-        .fade-left { animation-name: fadeInLeft; }
-        .fade-right { animation-name: fadeInRight; }
-        .zoom-in { animation-name: zoomIn; }
-        
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-        .delay-400 { animation-delay: 0.4s; }
-        .delay-500 { animation-delay: 0.5s; }
-        
-        /* Background */
+        .animate { animation: fadeInUp 0.8s ease-out; }
         .animated-background {
             position: fixed;
             top: 0;
@@ -120,50 +51,9 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: 
-                radial-gradient(ellipse at top, rgba(20, 184, 166, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at bottom right, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-                linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+            background: radial-gradient(ellipse at top, rgba(20, 184, 166, 0.15) 0%, transparent 50%),
+                        linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
         }
-        
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 50%;
-            opacity: 0;
-            animation: particleFloat 20s infinite;
-        }
-        
-        @keyframes particleFloat {
-            0% {
-                transform: translateY(100vh) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(100px);
-                opacity: 0;
-            }
-        }
-        
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -174,15 +64,13 @@
             background: rgba(10, 22, 18, 0.85);
             backdrop-filter: blur(30px);
             border-bottom: 1px solid rgba(20, 184, 166, 0.2);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s;
         }
-        
         nav.scrolled {
             padding: 1rem 0;
             background: rgba(10, 22, 18, 0.95);
             box-shadow: 0 10px 40px rgba(20, 184, 166, 0.1);
         }
-        
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -191,48 +79,31 @@
             justify-content: space-between;
             align-items: center;
         }
-        
         .logo {
             display: flex;
             align-items: center;
             gap: 1rem;
             text-decoration: none;
-            transition: all 0.3s ease;
         }
-        
-        .logo:hover {
-            transform: translateY(-3px);
-        }
-        
         .logo-img {
             width: 55px;
             height: 55px;
             filter: drop-shadow(0 0 20px rgba(20, 184, 166, 0.5));
-            transition: all 0.3s ease;
         }
-        
-        .logo:hover .logo-img {
-            filter: drop-shadow(0 0 30px rgba(20, 184, 166, 0.8));
-            transform: rotate(5deg);
-        }
-        
         .logo-text {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-light), var(--gold-light));
+            background: linear-gradient(135deg, var(--primary-light), var(--gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-        
         .nav-menu {
             display: flex;
             gap: 3rem;
             list-style: none;
             align-items: center;
         }
-        
         .nav-menu a {
             color: var(--light);
             text-decoration: none;
@@ -240,10 +111,8 @@
             font-size: 0.95rem;
             position: relative;
             padding: 0.5rem 0;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
+            transition: all 0.3s;
         }
-        
         .nav-menu a::after {
             content: '';
             position: absolute;
@@ -252,35 +121,19 @@
             width: 0;
             height: 2px;
             background: linear-gradient(90deg, var(--primary), var(--gold));
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             transform: translateX(-50%);
         }
-        
-        .nav-menu a:hover::after,
-        .nav-menu a.active::after {
-            width: 100%;
-        }
-        
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            color: var(--primary-light);
-        }
-        
+        .nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
+        .nav-menu a:hover, .nav-menu a.active { color: var(--primary-light); }
         .nav-cta {
             padding: 0.8rem 2rem;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: var(--dark);
             border-radius: 50px;
             font-weight: 700;
-            transition: all 0.3s ease;
             box-shadow: 0 5px 20px rgba(20, 184, 166, 0.3);
         }
-        
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(20, 184, 166, 0.5);
-        }
-        
         .mobile-toggle {
             display: none;
             background: none;
@@ -290,42 +143,11 @@
             padding: 0.5rem 1rem;
             cursor: pointer;
             border-radius: 8px;
-            transition: all 0.3s ease;
         }
-        
-        .mobile-toggle:hover {
-            background: var(--primary);
-            color: var(--dark);
-        }
-        
-        /* Page Header */
         .page-header {
             padding: 12rem 3rem 6rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
-        
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(20, 184, 166, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(80px);
-        }
-        
-        .page-header-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
         .page-badge {
             display: inline-block;
             padding: 0.6rem 1.8rem;
@@ -337,382 +159,118 @@
             font-weight: 700;
             margin-bottom: 2rem;
             letter-spacing: 2px;
-            text-transform: uppercase;
         }
-        
         .page-header h1 {
             font-family: 'Playfair Display', serif;
             font-size: 5rem;
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 2rem;
-            background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, var(--white), var(--primary-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-        
         .page-header p {
             font-size: 1.3rem;
             color: var(--gray);
             line-height: 1.8;
-        }
-        
-        /* Filter Tabs */
-        .filter-section {
-            padding: 4rem 3rem 2rem;
-        }
-        
-        .filter-container {
-            max-width: 1400px;
+            max-width: 800px;
             margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
         }
-        
-        .filter-btn {
-            padding: 1rem 2.5rem;
-            background: rgba(20, 184, 166, 0.05);
-            border: 2px solid rgba(20, 184, 166, 0.2);
-            border-radius: 50px;
-            color: var(--light);
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
+        .portfolio-section {
+            padding: 6rem 3rem;
         }
-        
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--dark);
-            border-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(20, 184, 166, 0.4);
-        }
-        
-        /* Projects Grid */
-        .projects-section {
-            padding: 4rem 3rem 6rem;
-        }
-        
-        .projects-container {
+        .section-container {
             max-width: 1400px;
             margin: 0 auto;
         }
-        
-        .projects-grid {
+        .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 4rem;
         }
-        
         .project-card {
-            position: relative;
-            background: linear-gradient(135deg, rgba(20, 184, 166, 0.05) 0%, rgba(16, 185, 129, 0.02) 100%);
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(16, 185, 129, 0.02));
             border: 2px solid rgba(20, 184, 166, 0.2);
-            border-radius: 25px;
+            border-radius: 30px;
+            padding: 0;
             overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s;
         }
-        
         .project-card:hover {
-            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(16, 185, 129, 0.05));
             border-color: var(--primary);
-            transform: translateY(-10px);
+            transform: translateY(-15px);
             box-shadow: 0 25px 60px rgba(20, 184, 166, 0.3);
         }
-        
         .project-image {
             width: 100%;
-            height: 280px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(20, 184, 166, 0.3) 0%, rgba(16, 185, 129, 0.3) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .project-card:hover .project-image::before {
-            opacity: 1;
-        }
-        
-        .project-icon {
             font-size: 5rem;
             color: var(--dark);
-            opacity: 0.7;
-            transition: all 0.3s ease;
         }
-        
-        .project-card:hover .project-icon {
-            transform: scale(1.2) rotate(10deg);
-            opacity: 1;
-        }
-        
         .project-content {
-            padding: 2.5rem;
+            padding: 3rem;
         }
-        
-        .project-category {
-            display: inline-block;
-            padding: 0.4rem 1.2rem;
+        .project-tags {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        .project-tag {
+            padding: 0.5rem 1.2rem;
             background: rgba(20, 184, 166, 0.1);
             border: 1px solid var(--primary);
             border-radius: 50px;
-            color: var(--primary);
             font-size: 0.85rem;
+            color: var(--primary-light);
             font-weight: 600;
-            margin-bottom: 1rem;
         }
-        
-        .project-content h3 {
+        .project-card h3 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             color: var(--white);
             margin-bottom: 1rem;
-            transition: all 0.3s ease;
         }
-        
         .project-card:hover h3 {
             color: var(--primary-light);
         }
-        
-        .project-content p {
-            color: var(--gray);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-        
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .tag {
-            padding: 0.4rem 1rem;
-            background: rgba(20, 184, 166, 0.05);
-            border: 1px solid rgba(20, 184, 166, 0.2);
-            border-radius: 20px;
+        .project-description {
             color: var(--light);
-            font-size: 0.85rem;
-        }
-        
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s ease;
-        }
-        
-        .project-link:hover {
-            gap: 1.2rem;
-            color: var(--gold);
-        }
-        
-        /* Testimonials Section */
-        .testimonials-section {
-            padding: 6rem 3rem;
-            background: rgba(20, 184, 166, 0.02);
-        }
-        
-        .testimonials-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-        
-        .section-title h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .section-title p {
-            font-size: 1.2rem;
-            color: var(--gray);
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-        }
-        
-        .testimonial-card {
-            background: linear-gradient(135deg, rgba(20, 184, 166, 0.05) 0%, rgba(16, 185, 129, 0.02) 100%);
-            border: 2px solid rgba(20, 184, 166, 0.2);
-            border-radius: 25px;
-            padding: 3rem;
-            transition: all 0.4s ease;
-        }
-        
-        .testimonial-card:hover {
-            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
-            border-color: var(--primary);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(20, 184, 166, 0.3);
-        }
-        
-        .testimonial-stars {
-            color: var(--gold);
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .testimonial-text {
-            color: var(--light);
-            font-size: 1.1rem;
             line-height: 1.8;
             margin-bottom: 2rem;
-            font-style: italic;
         }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
+        .project-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(20, 184, 166, 0.2);
         }
-        
-        .author-avatar {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--dark);
-            font-weight: 700;
-        }
-        
-        .author-info h4 {
-            color: var(--white);
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-        }
-        
-        .author-info p {
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            padding: 6rem 3rem;
-        }
-        
-        .cta-box {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 5rem 4rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: 30px;
+        .stat-item {
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
-        
-        .cta-box::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .cta-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .cta-box h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: var(--dark);
-            margin-bottom: 1.5rem;
-            font-weight: 900;
-        }
-        
-        .cta-box p {
-            color: var(--dark);
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-        }
-        
-        .btn {
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
+        .stat-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-light);
             font-weight: 700;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: all 0.4s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            cursor: pointer;
-            border: none;
-            font-family: 'Montserrat', sans-serif;
         }
-        
-        .btn-dark {
-            background: var(--dark);
-            color: var(--white);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 0.5rem;
         }
-        
-        .btn-dark:hover {
-            background: var(--darker);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-        }
-        
-        /* Footer */
         footer {
-            background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+            background: linear-gradient(180deg, var(--darker), var(--dark));
             padding: 6rem 3rem 3rem;
             border-top: 2px solid rgba(20, 184, 166, 0.2);
         }
-        
         .footer-content {
             max-width: 1400px;
             margin: 0 auto 4rem;
@@ -720,25 +278,18 @@
             grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 4rem;
         }
-        
         .footer-about h3 {
             font-family: 'Orbitron', sans-serif;
             color: var(--primary-light);
             margin-bottom: 1.5rem;
             font-size: 1.5rem;
         }
-        
         .footer-about p {
             color: var(--gray);
             line-height: 1.8;
             margin-bottom: 2rem;
         }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-        
+        .social-links { display: flex; gap: 1rem; }
         .social-link {
             width: 50px;
             height: 50px;
@@ -750,42 +301,29 @@
             justify-content: center;
             color: var(--primary);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
-        
         .social-link:hover {
             background: var(--primary);
             color: var(--dark);
             transform: translateY(-5px) rotate(360deg);
-            box-shadow: 0 10px 30px rgba(20, 184, 166, 0.4);
         }
-        
         .footer-links h4 {
             color: var(--white);
             margin-bottom: 1.5rem;
-            font-size: 1.1rem;
         }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 1rem;
-        }
-        
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 1rem; }
         .footer-links a {
             color: var(--gray);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             display: inline-block;
         }
-        
         .footer-links a:hover {
             color: var(--primary-light);
             transform: translateX(5px);
         }
-        
         .footer-bottom {
             max-width: 1400px;
             margin: 0 auto;
@@ -794,55 +332,14 @@
             text-align: center;
             color: var(--gray);
         }
-        
-        /* Scroll to Top */
-        .scroll-top {
-            position: fixed;
-            bottom: 3rem;
-            right: 3rem;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark);
-            font-size: 1.5rem;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 999;
-            box-shadow: 0 10px 30px rgba(20, 184, 166, 0.4);
-        }
-        
-        .scroll-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .scroll-top:hover {
-            transform: translateY(-5px) rotate(360deg);
-            box-shadow: 0 15px 40px rgba(20, 184, 166, 0.6);
-        }
-        
-        /* Responsive */
         @media (max-width: 1024px) {
-            .page-header h1 {
-                font-size: 4rem;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
+            .portfolio-grid { 
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
         }
         
         @media (max-width: 768px) {
+            .nav-container { padding: 0 1.5rem; }
             .nav-menu {
                 position: fixed;
                 top: 90px;
@@ -854,49 +351,85 @@
                 padding: 2rem;
                 gap: 1.5rem;
                 transform: translateX(-100%);
-                transition: transform 0.4s ease;
-                border-bottom: 2px solid rgba(20, 184, 166, 0.3);
+                transition: transform 0.4s;
             }
-            
-            .nav-menu.active {
-                transform: translateX(0);
+            .nav-menu.active { transform: translateX(0); }
+            .mobile-toggle { display: block; }
+            .page-header { padding: 8rem 1.5rem 4rem; }
+            .page-header h1 { 
+                font-size: 2.5rem;
+                line-height: 1.2;
             }
-            
-            .mobile-toggle {
-                display: block;
+            .page-header p { font-size: 1.1rem; }
+            .page-badge {
+                font-size: 0.8rem;
+                padding: 0.5rem 1.5rem;
             }
-            
-            .page-header {
-                padding: 8rem 2rem 4rem;
+            .portfolio-section { padding: 4rem 1.5rem; }
+            .portfolio-grid { 
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
             }
-            
-            .page-header h1 {
+            .project-image {
+                height: 200px;
+                font-size: 4rem;
+            }
+            .project-content {
+                padding: 2rem 1.5rem;
+            }
+            .project-tags {
+                gap: 0.75rem;
+                margin-bottom: 1rem;
+            }
+            .project-tag {
+                font-size: 0.8rem;
+                padding: 0.4rem 1rem;
+            }
+            .project-card h3 { 
+                font-size: 1.5rem;
+                margin-bottom: 0.75rem;
+            }
+            .project-description { 
+                font-size: 0.95rem;
+                margin-bottom: 1.5rem;
+            }
+            .project-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+                padding: 1.5rem 0;
+            }
+            .stat-value { font-size: 1.5rem; }
+            .stat-label { font-size: 0.8rem; }
+            footer { padding: 4rem 1.5rem 2rem; }
+            .footer-content { 
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text { font-size: 1.2rem; }
+            .logo-img { width: 45px; height: 45px; }
+            .page-header h1 { font-size: 2rem; }
+            .page-header p { font-size: 1rem; }
+            .project-image {
+                height: 180px;
                 font-size: 3rem;
             }
-            
-            .filter-section,
-            .projects-section,
-            .testimonials-section,
-            .cta-section {
-                padding: 4rem 2rem;
+            .project-content {
+                padding: 1.5rem 1.25rem;
             }
-            
-            .cta-box h2 {
-                font-size: 2.5rem;
-            }
-            
-            .footer-content {
+            .project-card h3 { font-size: 1.3rem; }
+            .project-stats {
                 grid-template-columns: 1fr;
+                gap: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Background -->
     <div class="animated-background"></div>
-    <div class="particles" id="particles"></div>
     
-    <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
@@ -917,223 +450,212 @@
         </div>
     </nav>
     
-    <!-- Page Header -->
     <header class="page-header">
-        <div class="page-header-content">
-            <div class="page-badge animate-on-scroll fade-up">OUR PORTFOLIO</div>
-            <h1 class="animate-on-scroll fade-up delay-100">Success Stories & Projects</h1>
-            <p class="animate-on-scroll fade-up delay-200">
-                Discover how we've helped businesses transform through innovative technology 
-                and strategic digital solutions.
-            </p>
-        </div>
+        <div class="page-badge animate">OUR WORK</div>
+        <h1 class="animate">Success Stories</h1>
+        <p class="animate">
+            Explore how we've helped businesses transform through innovative technology 
+            solutions and strategic digital implementation.
+        </p>
     </header>
     
-    <!-- Filter Section -->
-    <section class="filter-section">
-        <div class="filter-container">
-            <button class="filter-btn active animate-on-scroll zoom-in" data-filter="all">All Projects</button>
-            <button class="filter-btn animate-on-scroll zoom-in delay-100" data-filter="web">Web Development</button>
-            <button class="filter-btn animate-on-scroll zoom-in delay-200" data-filter="ai">AI & Automation</button>
-            <button class="filter-btn animate-on-scroll zoom-in delay-300" data-filter="ecommerce">E-Commerce</button>
-            <button class="filter-btn animate-on-scroll zoom-in delay-400" data-filter="hospitality">Hospitality</button>
-        </div>
-    </section>
-    
-    <!-- Projects Section -->
-    <section class="projects-section">
-        <div class="projects-container">
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card animate-on-scroll fade-up" data-category="hospitality">
+    <section class="portfolio-section">
+        <div class="section-container">
+            <div class="portfolio-grid">
+                <div class="project-card animate">
                     <div class="project-image">
-                        <i class="fas fa-hotel project-icon"></i>
+                        <i class="fas fa-hotel"></i>
                     </div>
                     <div class="project-content">
-                        <span class="project-category">Hospitality Tech</span>
-                        <h3>Luxury Resort Booking Platform</h3>
-                        <p>Complete digital transformation for a premium resort with integrated booking system, OTA connections, and automated guest communication.</p>
                         <div class="project-tags">
-                            <span class="tag">Website</span>
-                            <span class="tag">Booking System</span>
-                            <span class="tag">WhatsApp Bot</span>
+                            <span class="project-tag">Hospitality</span>
+                            <span class="project-tag">PMS</span>
+                            <span class="project-tag">Cloud</span>
                         </div>
-                        <a href="contact.html" class="project-link">
-                            View Details <i class="fas fa-arrow-right"></i>
-                        </a>
+                        <h3>Luxury Resort Management System</h3>
+                        <p class="project-description">
+                            Comprehensive property management solution for a 5-star resort chain, 
+                            integrating bookings, housekeeping, billing, and guest services in a 
+                            unified cloud-based platform.
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">40%</div>
+                                <div class="stat-label">Efficiency Gain</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">98%</div>
+                                <div class="stat-label">Uptime</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">5K+</div>
+                                <div class="stat-label">Daily Users</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Project 2 -->
-                <div class="project-card animate-on-scroll fade-up delay-100" data-category="ecommerce">
+                <div class="project-card animate">
                     <div class="project-image">
-                        <i class="fas fa-shopping-cart project-icon"></i>
+                        <i class="fas fa-shopping-bag"></i>
                     </div>
                     <div class="project-content">
-                        <span class="project-category">E-Commerce</span>
-                        <h3>Multi-Vendor E-Commerce Store</h3>
-                        <p>Full-featured online marketplace with inventory management, payment gateway integration, and automated order processing.</p>
                         <div class="project-tags">
-                            <span class="tag">E-Commerce</span>
-                            <span class="tag">Payment Gateway</span>
-                            <span class="tag">Inventory System</span>
+                            <span class="project-tag">E-Commerce</span>
+                            <span class="project-tag">Shopify</span>
+                            <span class="project-tag">SEO</span>
                         </div>
-                        <a href="contact.html" class="project-link">
-                            View Details <i class="fas fa-arrow-right"></i>
-                        </a>
+                        <h3>Fashion E-Commerce Platform</h3>
+                        <p class="project-description">
+                            Built a high-converting online store with advanced inventory management, 
+                            personalized recommendations, and integrated marketing automation for a 
+                            growing fashion brand.
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">250%</div>
+                                <div class="stat-label">Revenue Growth</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">15K+</div>
+                                <div class="stat-label">Monthly Orders</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">4.8</div>
+                                <div class="stat-label">Customer Rating</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Project 3 -->
-                <div class="project-card animate-on-scroll fade-up delay-200" data-category="ai">
+                <div class="project-card animate">
                     <div class="project-image">
-                        <i class="fas fa-robot project-icon"></i>
+                        <i class="fas fa-robot"></i>
                     </div>
                     <div class="project-content">
-                        <span class="project-category">AI & Automation</span>
-                        <h3>AI Customer Service Chatbot</h3>
-                        <p>Intelligent chatbot with NLP capabilities handling 10,000+ customer queries monthly with 95% satisfaction rate.</p>
                         <div class="project-tags">
-                            <span class="tag">AI Chatbot</span>
-                            <span class="tag">NLP</span>
-                            <span class="tag">24/7 Support</span>
+                            <span class="project-tag">AI</span>
+                            <span class="project-tag">Automation</span>
+                            <span class="project-tag">ML</span>
                         </div>
-                        <a href="contact.html" class="project-link">
-                            View Details <i class="fas fa-arrow-right"></i>
-                        </a>
+                        <h3>AI-Powered Customer Service</h3>
+                        <p class="project-description">
+                            Developed an intelligent chatbot and ticket automation system that handles 
+                            80% of customer queries automatically, reducing response time and improving 
+                            customer satisfaction.
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">80%</div>
+                                <div class="stat-label">Auto-Resolution</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">60%</div>
+                                <div class="stat-label">Cost Reduction</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">24/7</div>
+                                <div class="stat-label">Availability</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Project 4 -->
-                <div class="project-card animate-on-scroll fade-up delay-300" data-category="web">
+                <div class="project-card animate">
                     <div class="project-image">
-                        <i class="fas fa-laptop-code project-icon"></i>
+                        <i class="fas fa-database"></i>
                     </div>
                     <div class="project-content">
-                        <span class="project-category">Web Development</span>
-                        <h3>Corporate Website Redesign</h3>
-                        <p>Modern, responsive website with improved SEO resulting in 300% increase in organic traffic within 6 months.</p>
                         <div class="project-tags">
-                            <span class="tag">Responsive Design</span>
-                            <span class="tag">SEO</span>
-                            <span class="tag">Performance</span>
+                            <span class="project-tag">ERP</span>
+                            <span class="project-tag">Cloud</span>
+                            <span class="project-tag">Enterprise</span>
                         </div>
-                        <a href="contact.html" class="project-link">
-                            View Details <i class="fas fa-arrow-right"></i>
-                        </a>
+                        <h3>Manufacturing ERP Solution</h3>
+                        <p class="project-description">
+                            Implemented a comprehensive ERP system integrating production, inventory, 
+                            sales, and finance for a mid-sized manufacturing company, streamlining 
+                            operations across 3 facilities.
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">50%</div>
+                                <div class="stat-label">Time Savings</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">95%</div>
+                                <div class="stat-label">Data Accuracy</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">200+</div>
+                                <div class="stat-label">Active Users</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Project 5 -->
-                <div class="project-card animate-on-scroll fade-up delay-400" data-category="ai">
+                <div class="project-card animate">
                     <div class="project-image">
-                        <i class="fas fa-chart-line project-icon"></i>
+                        <i class="fas fa-chart-line"></i>
                     </div>
                     <div class="project-content">
-                        <span class="project-category">Data & Analytics</span>
+                        <div class="project-tags">
+                            <span class="project-tag">Analytics</span>
+                            <span class="project-tag">BI</span>
+                            <span class="project-tag">Dashboard</span>
+                        </div>
                         <h3>Business Intelligence Dashboard</h3>
-                        <p>Real-time analytics dashboard with predictive insights helping executive team make data-driven decisions.</p>
-                        <div class="project-tags">
-                            <span class="tag">Data Analytics</span>
-                            <span class="tag">Dashboards</span>
-                            <span class="tag">Reporting</span>
+                        <p class="project-description">
+                            Created a real-time analytics platform with custom KPI tracking, predictive 
+                            insights, and automated reporting for executive decision-making at a 
+                            multi-location retail chain.
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">100+</div>
+                                <div class="stat-label">KPIs Tracked</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">Real-time</div>
+                                <div class="stat-label">Data Updates</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">30%</div>
+                                <div class="stat-label">Better Decisions</div>
+                            </div>
                         </div>
-                        <a href="contact.html" class="project-link">
-                            View Details <i class="fas fa-arrow-right"></i>
-                        </a>
                     </div>
                 </div>
                 
-                <!-- Project 6 -->
-                <div class="project-card animate-on-scroll fade-up delay-500" data-category="web">
+                <div class="project-card animate">
                     <div class="project-image">
-                        <i class="fas fa-server project-icon"></i>
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
                     <div class="project-content">
-                        <span class="project-category">ERP System</span>
-                        <h3>Custom ERP Implementation</h3>
-                        <p>Frappe/ERPNext implementation with custom modules streamlining operations for manufacturing company.</p>
                         <div class="project-tags">
-                            <span class="tag">ERPNext</span>
-                            <span class="tag">Automation</span>
-                            <span class="tag">Integration</span>
+                            <span class="project-tag">Mobile App</span>
+                            <span class="project-tag">Food Tech</span>
+                            <span class="project-tag">API</span>
                         </div>
-                        <a href="contact.html" class="project-link">
-                            View Details <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-        <div class="testimonials-container">
-            <div class="section-title">
-                <h2 class="animate-on-scroll fade-up">What Our Clients Say</h2>
-                <p class="animate-on-scroll fade-up delay-100">
-                    Real feedback from businesses we've helped transform
-                </p>
-            </div>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-card animate-on-scroll fade-up">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">
-                        "Inovriksha Tech transformed our hotel operations completely. The automated booking system and WhatsApp integration increased our direct bookings by 60%. Highly professional team!"
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">RK</div>
-                        <div class="author-info">
-                            <h4>Rajesh Kumar</h4>
-                            <p>Hotel Manager, Premium Resorts</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card animate-on-scroll fade-up delay-100">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">
-                        "The AI chatbot they developed handles 95% of our customer queries automatically. It's been a game-changer for our support team. Response times improved dramatically!"
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">PS</div>
-                        <div class="author-info">
-                            <h4>Priya Sharma</h4>
-                            <p>CEO, TechRetail Solutions</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card animate-on-scroll fade-up delay-200">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">
-                        "Outstanding work on our e-commerce platform. The inventory management system is flawless, and sales increased by 150% in the first quarter. Worth every penny!"
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">AM</div>
-                        <div class="author-info">
-                            <h4>Amit Mehta</h4>
-                            <p>Founder, Online Bazaar</p>
+                        <h3>Restaurant Ordering App</h3>
+                        <p class="project-description">
+                            Built a mobile-first food ordering platform with AI-powered recommendations, 
+                            real-time order tracking, and integrated payment processing for a restaurant 
+                            franchise.
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">50K+</div>
+                                <div class="stat-label">Downloads</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">4.7</div>
+                                <div class="stat-label">App Rating</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">35%</div>
+                                <div class="stat-label">Order Increase</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1141,21 +663,6 @@
         </div>
     </section>
     
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-box animate-on-scroll zoom-in">
-            <div class="cta-content">
-                <h2>Ready to Start Your Project?</h2>
-                <p>Let's discuss how we can help transform your business with innovative solutions.</p>
-                <a href="contact.html" class="btn btn-dark">
-                    <span>Get Started Today</span>
-                    <i class="fas fa-rocket"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-about">
@@ -1197,7 +704,7 @@
             <div class="footer-links">
                 <h4>Contact</h4>
                 <ul>
-                    <li><a href="mailto:info@inovrikshatech.com">Email Us</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#335a5d555c735a5d5c45415a58405b524756505b1d505c5e">Email Us</a></li>
                     <li><a href="tel:+918658370065">+91 86583 70065</a></li>
                     <li><a href="careers.html">Careers</a></li>
                     <li><a href="contact.html">Get Quote</a></li>
@@ -1210,46 +717,7 @@
         </div>
     </footer>
     
-    <!-- Scroll to Top -->
-    <div class="scroll-top" id="scrollTop">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-    
-    <script>
-        // Create particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-                particlesContainer.appendChild(particle);
-            }
-        }
-        createParticles();
-        
-        // Scroll animations
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('animated');
-                }
-            });
-        }
-        
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
-        
-        // Navbar scroll effect
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
@@ -1259,10 +727,8 @@
             }
         });
         
-        // Mobile menu toggle
         const mobileToggle = document.getElementById('mobileToggle');
         const navMenu = document.getElementById('navMenu');
-        
         mobileToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             const icon = mobileToggle.querySelector('i');
@@ -1273,59 +739,4 @@
         navMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
-                mobileToggle.querySelector('i').classList.add('fa-bars');
-                mobileToggle.querySelector('i').classList.remove('fa-times');
-            });
-        });
-        
-        // Filter functionality
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-        
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                btn.classList.add('active');
-                
-                const filter = btn.getAttribute('data-filter');
-                
-                projectCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'block';
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, 10);
-                    } else {
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px)';
-                        setTimeout(() => {
-                            card.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            });
-        });
-        
-        // Scroll to top button
-        const scrollTop = document.getElementById('scrollTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                scrollTop.classList.add('visible');
-            } else {
-                scrollTop.classList.remove('visible');
-            }
-        });
-        
-        scrollTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
-</body>
-</html>
+                mobileToggle.querySelector('i').classLis
