@@ -372,6 +372,9 @@
                 gap: 1.5rem;
                 transform: translateX(-100%);
                 transition: transform 0.4s;
+                z-index: 999;
+                max-height: calc(100vh - 90px);
+                overflow-y: auto;
             }
             .nav-menu.active { transform: translateX(0); }
             .mobile-toggle { display: block; }
@@ -676,4 +679,10 @@
         navMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
-                mobileToggle.querySelector('i').classLis
+                mobileToggle.querySelector('i').classList.add('fa-bars');
+                mobileToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+    </script>
+</body>
+</html>
