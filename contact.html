@@ -435,6 +435,9 @@
                 gap: 1.5rem;
                 transform: translateX(-100%);
                 transition: transform 0.4s;
+                z-index: 999;
+                max-height: calc(100vh - 90px);
+                overflow-y: auto;
             }
             .nav-menu.active { transform: translateX(0); }
             .mobile-toggle { display: block; }
@@ -784,4 +787,14 @@
                     document.getElementById('successMessage').classList.add('show');
                     form.reset();
                     submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<span>Send Message</span><i c
+                    submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+                    
+                    setTimeout(() => {
+                        document.getElementById('successMessage').classList.remove('show');
+                    }, 5000);
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>
