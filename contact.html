@@ -572,7 +572,7 @@
                 <div class="info-card animate">
                     <div class="info-icon"><i class="fas fa-envelope"></i></div>
                     <h3>Email Us</h3>
-                    <p><a href="mailto:info@inovrikshatech.com">info@inovrikshatech.com</a></p>
+                    <p><a href="/cdn-cgi/l/email-protection#ff96919990bf969190898d96948c979e8b9a9c97d19c9092"><span class="__cf_email__" data-cfemail="2f464149406f464140595d46445c474e5b4a4c47014c4042">[email&#160;protected]</span></a></p>
                     <p style="margin-top: 1rem; color: var(--gray); font-size: 0.95rem;">
                         We respond within 24 hours
                     </p>
@@ -592,48 +592,59 @@
             
             <div class="contact-form animate">
                 <h2 class="form-title">Send Us a Message</h2>
-                <form id="contactForm">
+                
+                <!-- GOOGLE FORM EMBEDDED -->
+                <iframe 
+                    src="https://docs.google.com/forms/d/e/1FAIpQLScKV4CLNa1CkzLyCcr87LZ7-PLYT80tCX8KAE_SxY1uHpbb8A/viewform?embedded=true" 
+                    width="100%" 
+                    height="1400" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0"
+                    style="border-radius: 20px; background: transparent; border: none;">
+                    Loading…
+                </iframe>
+                
+                <!-- Alternative: If you want to keep the custom form design and submit to Google Forms -->
+                <!-- Uncomment this and comment out the iframe above -->
+                <!--
+                <form id="contactForm" action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="POST" target="hidden_iframe">
                     <div class="form-row">
                         <div class="form-group">
                             <label>Full Name <span class="required">*</span></label>
-                            <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
-                            <div class="error-message" id="nameError">Please enter your name</div>
+                            <input type="text" class="form-control" name="entry.XXXXXX" placeholder="Enter your full name" required>
                         </div>
                         
                         <div class="form-group">
                             <label>Email Address <span class="required">*</span></label>
-                            <input type="email" class="form-control" id="email" placeholder="your@email.com" required>
-                            <div class="error-message" id="emailError">Please enter a valid email</div>
+                            <input type="email" class="form-control" name="entry.XXXXXX" placeholder="your@email.com" required>
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
                             <label>Phone Number <span class="required">*</span></label>
-                            <input type="tel" class="form-control" id="phone" placeholder="+91 XXXXX XXXXX" required>
-                            <div class="error-message" id="phoneError">Please enter your phone number</div>
+                            <input type="tel" class="form-control" name="entry.XXXXXX" placeholder="+91 XXXXX XXXXX" required>
                         </div>
                         
                         <div class="form-group">
                             <label>Service Interested In <span class="required">*</span></label>
-                            <select class="form-control" id="service" required>
+                            <select class="form-control" name="entry.XXXXXX" required>
                                 <option value="">Select a service</option>
-                                <option value="web">Web Development & SEO</option>
-                                <option value="ecommerce">E-Commerce Operations</option>
-                                <option value="ai">AI & Automation</option>
-                                <option value="erp">ERP & Cloud Solutions</option>
-                                <option value="data">Data & Analytics</option>
-                                <option value="hospitality">Hospitality Management</option>
-                                <option value="other">Other</option>
+                                <option value="Web Development & SEO">Web Development & SEO</option>
+                                <option value="E-Commerce Operations">E-Commerce Operations</option>
+                                <option value="AI & Automation">AI & Automation</option>
+                                <option value="ERP & Cloud Solutions">ERP & Cloud Solutions</option>
+                                <option value="Data & Analytics">Data & Analytics</option>
+                                <option value="Hospitality Management">Hospitality Management</option>
+                                <option value="Other">Other</option>
                             </select>
-                            <div class="error-message" id="serviceError">Please select a service</div>
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label>Message / Project Details <span class="required">*</span></label>
-                        <textarea class="form-control" id="message" placeholder="Tell us about your project..." required></textarea>
-                        <div class="error-message" id="messageError">Please enter your message</div>
+                        <textarea class="form-control" name="entry.XXXXXX" placeholder="Tell us about your project..." required></textarea>
                     </div>
                     
                     <button type="submit" class="submit-btn">
@@ -646,6 +657,9 @@
                         Thank you for contacting us! We'll get back to you within 24 hours.
                     </div>
                 </form>
+                
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+                -->
             </div>
         </div>
     </section>
@@ -691,7 +705,7 @@
             <div class="footer-links">
                 <h4>Contact</h4>
                 <ul>
-                    <li><a href="mailto:info@inovrikshatech.com">info@inovrikshatech.com</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#0c65626a634c6562637a7e65677f646d78696f64226f6361"><span class="__cf_email__" data-cfemail="6801060e07280106071e1a01031b00091c0d0b00460b0705">[email&#160;protected]</span></a></li>
                     <li><a href="tel:+918658370065">+91 86583 70065</a></li>
                     <li><a href="careers.html">Careers</a></li>
                     <li><a href="contact.html">Get Quote</a></li>
@@ -704,8 +718,7 @@
         </div>
     </footer>
     
-    <script>
-    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
@@ -732,70 +745,14 @@
             });
         });
         
-        const form = document.getElementById('contactForm');
+        // Track Google Analytics
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_view', {
+                'event_category': 'Contact',
+                'event_label': 'Contact Page View'
+            });
+        }
         
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'form_submit', {
-                    'event_category': 'Contact',
-                    'event_label': 'Contact Form Submission'
-                });
-            }
-            
-            document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
-            
-            let isValid = true;
-            
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const service = document.getElementById('service').value;
-            const message = document.getElementById('message').value.trim();
-            
-            if (!name) {
-                document.getElementById('nameError').classList.add('show');
-                isValid = false;
-            }
-            
-            if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-                document.getElementById('emailError').classList.add('show');
-                isValid = false;
-            }
-            
-            if (!phone) {
-                document.getElementById('phoneError').classList.add('show');
-                isValid = false;
-            }
-            
-            if (!service) {
-                document.getElementById('serviceError').classList.add('show');
-                isValid = false;
-            }
-            
-            if (!message) {
-                document.getElementById('messageError').classList.add('show');
-                isValid = false;
-            }
-            
-            if (isValid) {
-                const submitBtn = form.querySelector('.submit-btn');
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
-                
-                setTimeout(() => {
-                    document.getElementById('successMessage').classList.add('show');
-                    form.reset();
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
-                    
-                    setTimeout(() => {
-                        document.getElementById('successMessage').classList.remove('show');
-                    }, 5000);
-                }, 1500);
-            }
-        });
-    </script>
-</body>
-</html>
+        // If using custom form submission (uncomment if needed)
+        /*
+        document.getElementById('conta
