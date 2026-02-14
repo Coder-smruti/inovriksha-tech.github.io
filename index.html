@@ -15,369 +15,348 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700;800&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
-            [cite_start]/* Brand Colors [cite: 1] */
-            --primary: #14B8A6;
-            --primary-dark: #0D9488;
-            --secondary: #10B981;
-            --gold: #F59E0B;
-            
-            /* Enhanced Light Palette */
-            --bg-light: #F8FAFC;
-            --text-main: #0F172A;
-            --text-muted: #475569;
-            --glass-white: rgba(255, 255, 255, 0.7);
-            --card-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05);
-            --gradient-main: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --primary: #0D9488;
+            --primary-light: #14B8A6;
+            --primary-dark: #0F766E;
+            --secondary: #2DD4BF;
+            --accent: #5EEAD4;
+            --white: #FFFFFF;
+            --off-white: #F0FDFA;
+            --light-gray: #CCFBF1;
+            --gray: #64748B;
+            --dark-gray: #334155;
+            --text-dark: #0F172A;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; overflow-x: hidden; }
-
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Montserrat', sans-serif;
-            background: var(--bg-light);
-            color: var(--text-main);
-            line-height: 1.6;
+            background: var(--white);
+            color: var(--text-dark);
+            overflow-x: hidden;
         }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate { animation: fadeInUp 0.8s ease-out; }
+        
+        /* Staggered animation for Icons */
+        .tech-icons .tech-icon-box:nth-child(1) { animation: scaleIn 0.6s ease-out 0.1s both; }
+        .tech-icons .tech-icon-box:nth-child(2) { animation: scaleIn 0.6s ease-out 0.2s both; }
+        .tech-icons .tech-icon-box:nth-child(3) { animation: scaleIn 0.6s ease-out 0.3s both; }
+        .tech-icons .tech-icon-box:nth-child(4) { animation: scaleIn 0.6s ease-out 0.4s both; }
+        .tech-icons .tech-icon-box:nth-child(5) { animation: scaleIn 0.6s ease-out 0.5s both; }
+        .tech-icons .tech-icon-box:nth-child(6) { animation: scaleIn 0.6s ease-out 0.6s both; }
+        
+        .reveal { opacity: 0; transform: translateY(60px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* --- Sophisticated Mesh Gradient Background --- */
-        .mesh-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background-color: var(--bg-light);
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(20, 184, 166, 0.1) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.05) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.1) 0px, transparent 50%),
-                radial-gradient(at 0% 100%, rgba(20, 184, 166, 0.05) 0px, transparent 50%);
-        }
+        .scroll-progress { position: fixed; top: 0; left: 0; width: 100%; height: 4px; background: rgba(13, 148, 136, 0.1); z-index: 9999; }
+        .scroll-progress-bar { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent)); width: 0%; transition: width 0.1s ease-out; box-shadow: 0 0 20px rgba(13, 148, 136, 0.5); }
+        
+        .animated-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(ellipse 800px 600px at top right, rgba(13, 148, 136, 0.15) 0%, transparent 50%), radial-gradient(ellipse 600px 800px at bottom left, rgba(20, 184, 166, 0.12) 0%, transparent 50%), linear-gradient(180deg, #FFFFFF 0%, #F0FDFA 50%, #CCFBF1 100%); animation: backgroundShift 15s ease infinite; }
+        @keyframes backgroundShift { 0%, 100% { opacity: 1; } 50% { opacity: 0.95; } }
+        
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1.5rem 0; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(13, 148, 136, 0.2); transition: all 0.4s; }
+        nav.scrolled { padding: 1rem 0; background: rgba(255, 255, 255, 0.9); box-shadow: 0 8px 40px rgba(13, 148, 136, 0.15); }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 3rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
+        .logo-img { width: 55px; height: 55px; animation: logoGlow 3s ease-in-out infinite; }
+        @keyframes logoGlow { 0%, 100% { filter: drop-shadow(0 0 10px rgba(13, 148, 136, 0.4)); } 50% { filter: drop-shadow(0 0 20px rgba(13, 148, 136, 0.6)); } }
+        .logo-text { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; font-weight: 700; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .nav-menu { display: flex; gap: 3rem; list-style: none; align-items: center; }
+        .nav-menu a { color: var(--dark-gray); text-decoration: none; font-weight: 600; font-size: 0.95rem; position: relative; padding: 0.5rem 0; transition: 0.3s; }
+        .nav-menu a:hover { color: var(--primary); }
+        .nav-cta { padding: 0.8rem 2rem; background: var(--primary); color: var(--white) !important; border-radius: 50px; font-weight: 700; }
+        .mobile-toggle { display: none; background: none; border: 2px solid var(--primary); color: var(--primary); padding: 0.5rem 1rem; cursor: pointer; border-radius: 8px; }
+        
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 10rem 3rem 6rem; position: relative; }
+        .hero-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 6rem; align-items: center; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 900; line-height: 1.1; margin-bottom: 2rem; background: linear-gradient(135deg, #0F172A, #0D9488); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-subtitle { font-size: 1.3rem; color: var(--gray); margin-bottom: 3rem; line-height: 1.8; }
+        
+        .hero-badges { display: flex; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
+        .badge { padding: 0.6rem 1.5rem; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(13, 148, 136, 0.3); border-radius: 50px; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; transition: 0.4s; }
+        .badge:hover { transform: translateY(-5px); background: white; }
 
-        /* --- Floating Navigation --- */
-        nav {
-            position: fixed;
-            top: 20px; left: 50%;
-            transform: translateX(-50%);
-            width: 90%; max-width: 1400px;
-            z-index: 1000;
-            padding: 1rem 2rem;
-            background: var(--glass-white);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 100px;
-            display: flex; justify-content: space-between; align-items: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        nav.scrolled {
-            top: 0; width: 100%; border-radius: 0;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
+        .btn { padding: 1.2rem 3rem; border-radius: 50px; font-weight: 700; text-decoration: none; transition: 0.4s; display: inline-flex; align-items: center; gap: 0.8rem; }
+        .btn-primary { background: var(--primary); color: white; box-shadow: 0 10px 30px rgba(13, 148, 136, 0.3); }
+        .btn-primary:hover { transform: translateY(-5px); }
+        .btn-secondary { background: rgba(255, 255, 255, 0.8); color: var(--primary); border: 2px solid var(--primary); }
 
-        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-img { width: 45px; height: 45px; transition: transform 0.5s; }
-        .logo:hover .logo-img { transform: rotate(15deg); }
-        .logo-text { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: var(--text-main); letter-spacing: 1px; }
+        .hero-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); border: 2px solid rgba(255, 255, 255, 0.8); border-radius: 30px; padding: 3rem; animation: float 6s ease-in-out infinite; box-shadow: 0 30px 80px rgba(13, 148, 136, 0.2); }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        
+        .tech-icons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .tech-icon-box { background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(13, 148, 136, 0.2); border-radius: 20px; padding: 2rem 1.5rem; text-align: center; transition: 0.4s ease; }
+        .tech-icon-box:hover { transform: translateY(-8px); border-color: var(--primary); } /* STABLE HOVER */
+        .tech-icon-box i { font-size: 3rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
 
-        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-        .nav-links a { 
-            text-decoration: none; color: var(--text-muted); 
-            font-weight: 600; font-size: 0.9rem; transition: 0.3s;
-        }
-        .nav-links a:hover { color: var(--primary); }
+        .stats-bar { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); border-radius: 30px; padding: 3rem; margin: 4rem 3rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; box-shadow: 0 30px 80px rgba(13, 148, 136, 0.15); }
+        .stat-item { text-align: center; }
+        .stat-number { font-family: 'Orbitron', sans-serif; font-size: 3.5rem; font-weight: 900; color: var(--primary); margin-bottom: 0.5rem; }
+        .stat-label { color: var(--gray); font-weight: 600; }
 
-        .nav-cta {
-            padding: 0.8rem 1.8rem;
-            background: var(--gradient-main);
-            color: white !important;
-            border-radius: 50px;
-            font-weight: 700;
-            box-shadow: 0 10px 20px rgba(20, 184, 166, 0.2);
-        }
+        .page-links { padding: 8rem 3rem; background: var(--off-white); }
+        .section-title { text-align: center; margin-bottom: 5rem; }
+        .section-badge { display: inline-block; padding: 0.6rem 1.8rem; border: 2px solid var(--primary); border-radius: 50px; color: var(--primary-dark); font-size: 0.9rem; font-weight: 700; margin-bottom: 1.5rem; }
+        .section-title h2 { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; margin-bottom: 1.5rem; }
+        
+        .page-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; }
+        .page-card { background: white; border-radius: 30px; padding: 3rem; text-decoration: none; transition: 0.4s ease; box-shadow: 0 15px 40px rgba(0,0,0,0.05); }
+        .page-card:hover { transform: translateY(-12px); box-shadow: 0 25px 60px rgba(13, 148, 136, 0.15); } /* STABLE HOVER */
+        .page-icon { width: 80px; height: 80px; background: var(--off-white); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; color: var(--primary); font-size: 2.5rem; }
+        .page-card h3 { font-family: 'Orbitron', sans-serif; font-size: 1.6rem; margin-bottom: 1rem; color: var(--text-dark); }
+        .page-card p { color: var(--gray); line-height: 1.8; margin-bottom: 2rem; }
+        .page-arrow { display: flex; align-items: center; gap: 0.8rem; color: var(--primary); font-weight: 700; }
 
-        /* --- Hero Section --- */
-        .hero {
-            padding: 12rem 3rem 6rem;
-            display: flex; align-items: center; min-height: 90vh;
-        }
-        .hero-grid {
-            max-width: 1400px; margin: 0 auto;
-            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-        }
+        /* --- MODERN FOOTER DESIGN --- */
+        footer { background: linear-gradient(180deg, #F0FDFA 0%, #FFFFFF 100%); padding: 8rem 3rem 3rem; border-top: 1px solid rgba(13, 148, 136, 0.1); position: relative; }
+        .footer-content { max-width: 1400px; margin: 0 auto 5rem; display: grid; grid-template-columns: 1.5fr 0.8fr 0.8fr 1fr; gap: 4rem; z-index: 1; position: relative;}
+        .footer-about h3 { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--primary); }
+        .footer-about p { color: var(--gray); line-height: 1.8; font-size: 0.95rem; margin-bottom: 2rem; }
+        .social-links { display: flex; gap: 1rem; }
+        .social-link { width: 45px; height: 45px; background: white; border: 1px solid var(--primary-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); text-decoration: none; transition: 0.3s; }
+        .social-link:hover { background: var(--primary); color: white; transform: translateY(-5px); }
+        
+        .footer-links h4 { color: var(--text-dark); font-size: 1.1rem; font-weight: 700; margin-bottom: 2rem; position: relative; }
+        .footer-links h4::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 30px; height: 2px; background: var(--primary); }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 1.2rem; }
+        .footer-links a { color: var(--gray); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+        .footer-links i { width: 25px; color: var(--primary); }
 
-        .hero-content h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 5.5rem; line-height: 1;
-            margin-bottom: 2rem; color: var(--text-main);
-        }
-        .gradient-text {
-            background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2.5rem; border-top: 1px solid rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; color: var(--gray); font-size: 0.85rem; }
+        .footer-bottom-links { display: flex; gap: 2rem; }
 
-        .hero-content p {
-            font-size: 1.2rem; color: var(--text-muted);
-            margin-bottom: 3rem; max-width: 600px;
-        }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 1000; }
+        .whatsapp-button { width: 65px; height: 65px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; box-shadow: 0 10px 30px rgba(37,211,102,0.3); text-decoration: none; transition: 0.3s; }
+        .whatsapp-button:hover { transform: scale(1.1); }
 
-        /* --- Interactive Visual --- */
-        .hero-visual { position: relative; }
-        .main-card {
-            background: white; padding: 3rem;
-            border-radius: 40px; border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: var(--card-shadow);
-            position: relative; overflow: hidden;
-        }
-        .main-card::before {
-            content: ''; position: absolute; top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(20, 184, 166, 0.05) 0%, transparent 70%);
-            animation: rotate 10s linear infinite;
-        }
-
-        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-        .service-dots {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-            position: relative; z-index: 1;
-        }
-        .dot-box {
-            background: #f8fafc; padding: 1.5rem;
-            border-radius: 20px; text-align: center;
-            transition: 0.4s; border: 1px solid transparent;
-        }
-        .dot-box:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            background: white;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-        }
-        .dot-box i { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
-
-        /* --- Stats Section --- */
-        .stats-wrap {
-            background: white; padding: 4rem;
-            margin: -4rem 3rem 4rem; border-radius: 40px;
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            text-align: center; box-shadow: var(--card-shadow);
-        }
-        .stat-val { 
-            font-family: 'Orbitron', sans-serif; font-size: 3rem; 
-            background: var(--gradient-main); -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; font-weight: 900;
-        }
-
-        /* --- Modern Info Cards --- */
-        .services-preview { padding: 6rem 3rem; }
-        .section-tag {
-            color: var(--primary); font-weight: 700; letter-spacing: 3px;
-            text-transform: uppercase; display: block; margin-bottom: 1rem; text-align: center;
-        }
-        .section-title { font-family: 'Playfair Display', serif; font-size: 3.5rem; text-align: center; margin-bottom: 4rem; }
-
-        .grid-3 {
-            max-width: 1400px; margin: 0 auto;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 30px;
-        }
-        .modern-card {
-            background: white; padding: 4rem 3rem; border-radius: 35px;
-            text-decoration: none; color: inherit;
-            transition: 0.5s; border: 1px solid rgba(0,0,0,0.03);
-            display: flex; flex-direction: column; gap: 20px;
-        }
-        .modern-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
-            border-color: var(--primary);
-        }
-        .card-icon {
-            width: 70px; height: 70px; background: #f0fdfa;
-            border-radius: 20px; display: flex; align-items: center; justify-content: center;
-            color: var(--primary); font-size: 1.8rem;
-        }
-        .modern-card h3 { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; }
-        .card-link { color: var(--primary); font-weight: 700; display: flex; align-items: center; gap: 10px; }
-
-        /* --- Footer --- */
-        footer { background: #f1f5f9; padding: 8rem 3rem 4rem; border-top: 1px solid #e2e8f0; }
-        .footer-grid {
-            max-width: 1400px; margin: 0 auto;
-            display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 4rem;
-        }
-        .footer-logo { font-family: 'Orbitron', sans-serif; color: var(--primary); margin-bottom: 1.5rem; font-size: 1.5rem; }
-        .footer-col h4 { margin-bottom: 2rem; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; }
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 1rem; }
-        .footer-col a { text-decoration: none; color: var(--text-muted); transition: 0.3s; }
-        .footer-col a:hover { color: var(--primary); padding-left: 5px; }
-
-        /* --- Floating CTA --- */
-        .whatsapp-float {
-            position: fixed; bottom: 40px; right: 40px;
-            width: 70px; height: 70px; background: #25D366;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 2.2rem; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
-            z-index: 1000; text-decoration: none; transition: 0.3s;
-        }
-        .whatsapp-float:hover { transform: scale(1.1); }
-
-        /* --- Responsive --- */
-        @media (max-width: 1024px) {
-            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+        @media (max-width: 1024px) { 
+            .hero-container { grid-template-columns: 1fr; text-align: center; } 
             .hero-content h1 { font-size: 3.5rem; }
-            .hero-content p { margin: 0 auto 3rem; }
-            .stats-wrap { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-            .nav-links { display: none; }
+            .hero-badges, .hero-cta { justify-content: center; }
+            .footer-content { grid-template-columns: 1fr 1fr; }
         }
+        @media (max-width: 768px) { .nav-menu { display: none; } .mobile-toggle { display: block; } .stats-bar { grid-template-columns: 1fr 1fr; } .footer-content { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-
-    <div class="mesh-bg"></div>
-
+    <div class="scroll-progress"><div class="scroll-progress-bar" id="scrollProgressBar"></div></div>
+    <div class="animated-background"></div>
+    
     <nav id="navbar">
-        <a href="index.html" class="logo">
-            <img src="logo_Invo.png" alt="Inovriksha Tech" class="logo-img">
-            <span class="logo-text">INOVRIKSHA</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="portfolio.html">Work</a></li>
-            <li><a href="contact.html" class="nav-cta">Start a Project</a></li>
-        </ul>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo_Invo.png" alt="Inovriksha Tech" class="logo-img">
+                <span class="logo-text">INOVRIKSHA TECH</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+        </div>
     </nav>
-
+    
     <section class="hero">
-        <div class="hero-grid">
-            <div class="hero-content" data-aos="fade-right">
-                <span class="section-tag" style="text-align: left;">Innovating from the roots</span>
-                <h1>Growing your <span class="gradient-text">Future</span> with AI</h1>
-                [cite_start]<p>We combine deep industry roots with cutting-edge technology to scale your business into the digital future. [cite: 1]</p>
-                <div style="display: flex; gap: 20px;">
-                    <a href="services.html" class="nav-cta" style="padding: 1.2rem 2.5rem;">Explore Ecosystem</a>
-                    <a href="about.html" class="modern-card" style="padding: 1.2rem 2.5rem; border-radius: 50px;">Our Story</a>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="animate">Innovating from the Roots, Scaling to the Future</h1>
+                <p class="hero-subtitle animate">Transform your business with premium digital innovation, AI automation, and hospitality solutions that drive exponential growth.</p>
+                <div class="hero-badges">
+                    <span class="badge"><i class="fas fa-award"></i> Award-Winning</span>
+                    <span class="badge"><i class="fas fa-shield-alt"></i> Enterprise Security</span>
+                    <span class="badge"><i class="fas fa-headset"></i> 24/7 Support</span>
+                </div>
+                <div class="hero-cta animate">
+                    <a href="services.html" class="btn btn-primary">Explore Services <i class="fas fa-arrow-right"></i></a>
+                    <a href="contact.html" class="btn btn-secondary">Get Consultation</a>
                 </div>
             </div>
-            <div class="hero-visual" data-aos="zoom-in">
-                <div class="main-card">
-                    <div class="service-dots">
-                        <div class="dot-box"><i class="fas fa-brain"></i><p>AI</p></div>
-                        <div class="dot-box"><i class="fas fa-hotel"></i><p>Hospitality</p></div>
-                        <div class="dot-box"><i class="fas fa-shopping-cart"></i><p>E-com</p></div>
-                        <div class="dot-box"><i class="fas fa-code"></i><p>Web</p></div>
-                        <div class="dot-box"><i class="fas fa-shield-alt"></i><p>Secure</p></div>
-                        <div class="dot-box"><i class="fas fa-rocket"></i><p>Scale</p></div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="tech-icons">
+                        <div class="tech-icon-box"><i class="fas fa-brain"></i><p>AI & ML</p></div>
+                        <div class="tech-icon-box"><i class="fas fa-cloud"></i><p>Cloud Tech</p></div>
+                        <div class="tech-icon-box"><i class="fas fa-mobile-alt"></i><p>Mobile Apps</p></div>
+                        <div class="tech-icon-box"><i class="fas fa-robot"></i><p>Automation</p></div>
+                        <div class="tech-icon-box"><i class="fas fa-shield-alt"></i><p>Cybersecurity</p></div>
+                        <div class="tech-icon-box"><i class="fas fa-chart-line"></i><p>Analytics</p></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <div class="stats-wrap" data-aos="fade-up">
+    
+    <div class="stats-bar reveal">
         <div class="stat-item">
-            <div class="stat-val">150+</div>
-            <p>Projects Delivered</p>
+            <div class="stat-number" data-target="150" data-suffix="+">0</div>
+            <div class="stat-label">Projects Delivered</div>
         </div>
         <div class="stat-item">
-            <div class="stat-val">80+</div>
-            <p>Global Clients</p>
+            <div class="stat-number" data-target="80" data-suffix="+">0</div>
+            <div class="stat-label">Happy Clients</div>
         </div>
         <div class="stat-item">
-            <div class="stat-val">24/7</div>
-            <p>Active Support</p>
+            <div class="stat-number" data-target="24" data-suffix="/7">0</div>
+            <div class="stat-label">Support Available</div>
         </div>
         <div class="stat-item">
-            <div class="stat-val">10+</div>
-            <p>Years Excellence</p>
+            <div class="stat-number" data-target="10" data-suffix="+">0</div>
+            <div class="stat-label">Years Experience</div>
         </div>
     </div>
-
-    <section class="services-preview">
-        <span class="section-tag" data-aos="fade-up">Our Expertise</span>
-        [cite_start]<h2 class="section-title" data-aos="fade-up">A Unified Ecosystem [cite: 1]</h2>
-        
-        <div class="grid-3">
-            <a href="services.html" class="modern-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="card-icon"><i class="fas fa-code"></i></div>
-                <h3>Digital Presence</h3>
-                [cite_start]<p>Custom-built web experiences optimized for conversion and performance. [cite: 1]</p>
-                <span class="card-link">View Details <i class="fas fa-arrow-right"></i></span>
+    
+    <section class="page-links">
+        <div class="section-title reveal">
+            <div class="section-badge">DISCOVER MORE</div>
+            <h2>Explore Our World</h2>
+            <p style="color:var(--gray); max-width:600px; margin: 0 auto;">Comprehensive digital solutions for your business needs.</p>
+        </div>
+        <div class="page-grid">
+            <a href="services.html" class="page-card reveal">
+                <div class="page-icon"><i class="fas fa-code"></i></div>
+                <h3>Our Services</h3>
+                <p>AI automation to hospitality tech, designed for growth.</p>
+                <div class="page-arrow">View Services <i class="fas fa-arrow-right"></i></div>
             </a>
-
-            <a href="services.html" class="modern-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="card-icon"><i class="fas fa-robot"></i></div>
-                <h3>AI Automation</h3>
-                [cite_start]<p>Streamline operations with intelligent bots and machine learning workflows. [cite: 1]</p>
-                <span class="card-link">View Details <i class="fas fa-arrow-right"></i></span>
+            <a href="about.html" class="page-card reveal">
+                <div class="page-icon"><i class="fas fa-building"></i></div>
+                <h3>About Us</h3>
+                <p>Learn about our journey and the team behind Inovriksha Tech.</p>
+                <div class="page-arrow">Learn More <i class="fas fa-arrow-right"></i></div>
             </a>
-
-            <a href="services.html" class="modern-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="card-icon"><i class="fas fa-hotel"></i></div>
-                <h3>Hospitality Tech</h3>
-                [cite_start]<p>Comprehensive systems for modern hotel and resort management. [cite: 1]</p>
-                <span class="card-link">View Details <i class="fas fa-arrow-right"></i></span>
+            <a href="portfolio.html" class="page-card reveal">
+                <div class="page-icon"><i class="fas fa-briefcase"></i></div>
+                <h3>Portfolio</h3>
+                <p>Discover our success stories across various industries.</p>
+                <div class="page-arrow">View Work <i class="fas fa-arrow-right"></i></div>
             </a>
         </div>
     </section>
-
+    
     <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <div class="footer-logo">INOVRIKSHA</div>
-                <p>At Inovriksha Tech, we believe in growth from the roots. [cite_start]We help businesses transform through cutting-edge technology. [cite: 1]</p>
-            </div>
-            <div class="footer-col">
-                <h4>QUICK LINKS</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>SOLUTIONS</h4>
-                <ul>
-                    <li><a href="services.html">AI & Automation</a></li>
-                    <li><a href="services.html">Web Development</a></li>
-                    <li><a href="services.html">E-Commerce</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>CONNECT</h4>
-                [cite_start]<p>Bhubaneswar, Odisha, India [cite: 1]</p>
-                [cite_start]<p>+91 87635 47063 [cite: 1]</p>
-                <div style="display:flex; gap:15px; margin-top:20px;">
-                    <a href="https://www.linkedin.com/company/inovriksha-tech-pvt-ltd/" style="font-size:1.5rem;"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/inovriksha_tech/" style="font-size:1.5rem;"><i class="fab fa-instagram"></i></a>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>Inovriksha Tech</h3>
+                <p>Innovating from the roots, scaling to the future. Strategic digital solutions for modern businesses.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/company/inovriksha-tech-pvt-ltd/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/inovriksha_tech/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/InovrikshaTech" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="about.html">About Company</a></li>
+                    <li><a href="portfolio.html">Success Stories</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">AI Automation</a></li>
+                    <li><a href="#">E-Commerce</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Get In Touch</h4>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> info@inovrikshatech.com</li>
+                    <li><i class="fas fa-phone-alt"></i> +91 87635 47063</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Bhubaneswar, Odisha</li>
+                </ul>
+            </div>
         </div>
-        <div style="text-align:center; margin-top:4rem; color:var(--text-muted); font-size:0.8rem;">
-            &copy; [cite_start]2026 Inovriksha Tech Pvt Ltd. All Rights Reserved. [cite: 1]
+        <div class="footer-bottom">
+            <p>&copy; 2026 Inovriksha Tech Pvt Ltd. All Rights Reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
         </div>
     </footer>
+    
+    <div class="whatsapp-float">
+        <a href="https://wa.me/918763547063?text=Hi" target="_blank" class="whatsapp-button"><i class="fab fa-whatsapp"></i></a>
+    </div>
 
-    <a href="https://wa.me/918763547063" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
-
+        // SCROLL REVEAL & NAVBAR
         window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) nav.classList.add('scrolled');
-            else nav.classList.remove('scrolled');
+            const scrollPercent = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('scrollProgressBar').style.width = scrollPercent + '%';
+            if (window.scrollY > 100) document.getElementById('navbar').classList.add('scrolled');
+            else document.getElementById('navbar').classList.remove('scrolled');
+        });
+
+        // CONTINUOUS REPEATING COUNTDOWN
+        const stats = document.querySelectorAll('.stat-number');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = +entry.target.getAttribute('data-target');
+                    const suffix = entry.target.getAttribute('data-suffix') || '';
+                    let current = 0;
+                    const increment = target / 100;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            entry.target.innerText = target + suffix;
+                            clearInterval(timer);
+                        } else {
+                            entry.target.innerText = Math.floor(current) + suffix;
+                        }
+                    }, 20);
+                } else {
+                    entry.target.innerText = "0"; // Reset when out of view
+                }
+            });
+        }, { threshold: 0.5 });
+        stats.forEach(s => statsObserver.observe(s));
+
+        // REVEAL ON SCROLL
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(r => revealObserver.observe(r));
+
+        // MOBILE MENU SIMPLE TOGGLE
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        mobileToggle.addEventListener('click', () => {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            if(navMenu.style.display === 'flex') {
+                navMenu.style.flexDirection = 'column';
+                navMenu.style.position = 'absolute';
+                navMenu.style.top = '100%';
+                navMenu.style.left = '0';
+                navMenu.style.width = '100%';
+                navMenu.style.background = 'white';
+                navMenu.style.padding = '20px';
+                navMenu.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+            }
         });
     </script>
 </body>
