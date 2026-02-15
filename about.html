@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inovriksha Tech | Premium Digital Innovation & AI Solutions</title>
+    <title>About Us | Inovriksha Tech</title>
     
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N543N2EW1R"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -15,42 +16,53 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700;800&family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         :root {
-            /* Primary Brand Colors */
-            --primary: #14B8A6;
-            --primary-light: #2DD4BF;
-            --secondary: #10B981;
-            --gold: #F59E0B;
+            /* Teal Green Palette matching logo */
+            --primary-teal: #14B8A6;
+            --primary-teal-light: #2DD4BF;
+            --primary-teal-dark: #0D9488;
+            --accent-teal: #5EEAD4;
+            --teal-50: #F0FDFA;
+            --teal-100: #CCFBF1;
+            --teal-200: #99F6E4;
+            --teal-900: #134E4A;
             
-            /* Light Theme Palette */
-            --dark: #0F172A;      /* Headings */
-            --gray: #475569;      /* Body text */
-            --light: #F8FAFC;     /* Page background */
-            --white: #FFFFFF;     /* Cards & Nav background */
-            --border: #E2E8F0;    /* Subtle borders */
+            /* Neutral Palette */
+            --white: #FFFFFF;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+            --dark-text: #1E293B;
         }
-
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-
+        
         body {
             font-family: 'Montserrat', sans-serif;
-            background: var(--light);
-            color: var(--gray);
+            background: var(--white);
+            color: var(--dark-text);
             overflow-x: hidden;
+            line-height: 1.6;
         }
-
+        
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(50px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .animate { animation: fadeInUp 0.8s ease-out; }
-
-        /* Light Animated Background */
+        
+        /* Decorative Background Elements */
         .animated-background {
             position: fixed;
             top: 0;
@@ -58,28 +70,54 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: radial-gradient(circle at top right, rgba(20, 184, 166, 0.08) 0%, transparent 40%),
-                        radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.05) 0%, transparent 40%),
-                        var(--light);
+            background: linear-gradient(135deg, var(--white) 0%, var(--teal-50) 100%);
         }
-
-        /* Navbar - White Glass Effect */
+        
+        .animated-background::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--teal-100) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+        
+        .animated-background::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--teal-200) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+        
+        /* Navigation */
         nav {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
             padding: 1.5rem 0;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(25px);
-            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--gray-200);
+            box-shadow: 0 2px 20px rgba(20, 184, 166, 0.08);
             transition: all 0.4s;
         }
+        
         nav.scrolled {
             padding: 1rem 0;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 30px rgba(20, 184, 166, 0.12);
         }
-
+        
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -88,33 +126,44 @@
             justify-content: space-between;
             align-items: center;
         }
-
+        
         .logo {
             display: flex;
             align-items: center;
             gap: 1rem;
             text-decoration: none;
         }
+        
         .logo-img {
             width: 55px;
             height: 55px;
-            filter: drop-shadow(0 4px 10px rgba(20, 184, 166, 0.2));
+            filter: drop-shadow(0 2px 8px rgba(20, 184, 166, 0.3));
+            transition: transform 0.3s;
         }
+        
+        .logo:hover .logo-img {
+            transform: scale(1.05);
+        }
+        
         .logo-text {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--dark);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-teal-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
         }
-
+        
         .nav-menu {
             display: flex;
             gap: 3rem;
             list-style: none;
             align-items: center;
         }
+        
         .nav-menu a {
-            color: var(--gray);
+            color: var(--gray-700);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
@@ -122,255 +171,647 @@
             padding: 0.5rem 0;
             transition: all 0.3s;
         }
-        .nav-menu a:hover, .nav-menu a.active {
-            color: var(--primary);
-        }
+        
         .nav-menu a::after {
             content: '';
             position: absolute;
-            bottom: 0; left: 50%;
-            width: 0; height: 2px;
-            background: var(--primary);
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary-teal);
             transition: all 0.3s;
             transform: translateX(-50%);
         }
-        .nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
-
+        
+        .nav-menu a:hover::after, 
+        .nav-menu a.active::after { 
+            width: 100%; 
+        }
+        
+        .nav-menu a:hover, 
+        .nav-menu a.active { 
+            color: var(--primary-teal); 
+        }
+        
         .nav-cta {
             padding: 0.8rem 2rem;
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-teal-dark));
             color: var(--white) !important;
             border-radius: 50px;
             font-weight: 700;
-            box-shadow: 0 5px 15px rgba(20, 184, 166, 0.2);
+            box-shadow: 0 4px 15px rgba(20, 184, 166, 0.3);
+            transition: all 0.3s;
         }
-
+        
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(20, 184, 166, 0.4);
+        }
+        
+        .nav-cta::after {
+            display: none;
+        }
+        
         .mobile-toggle {
             display: none;
             background: none;
-            border: 2px solid var(--primary);
-            color: var(--primary);
+            border: 2px solid var(--primary-teal);
+            color: var(--primary-teal);
             font-size: 1.5rem;
             padding: 0.5rem 1rem;
             cursor: pointer;
             border-radius: 8px;
+            transition: all 0.3s;
         }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 10rem 3rem 6rem;
+        
+        .mobile-toggle:hover {
+            background: var(--teal-50);
         }
-        .hero-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 6rem;
-            align-items: center;
+        
+        /* Page Header */
+        .page-header {
+            padding: 12rem 3rem 6rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--white) 0%, var(--teal-50) 100%);
+            position: relative;
+            overflow: hidden;
         }
-        .hero-content h1 {
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="%2314B8A6" opacity="0.1"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+        
+        .page-badge {
+            display: inline-block;
+            padding: 0.6rem 1.8rem;
+            background: var(--teal-100);
+            border: 2px solid var(--primary-teal-light);
+            border-radius: 50px;
+            color: var(--primary-teal-dark);
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            position: relative;
+        }
+        
+        .page-header h1 {
             font-family: 'Playfair Display', serif;
             font-size: 5rem;
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 2rem;
-            color: var(--dark);
+            color: var(--gray-900);
+            position: relative;
         }
-        .hero-subtitle {
+        
+        .page-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-teal), var(--primary-teal-light));
+            border-radius: 2px;
+        }
+        
+        .page-header p {
             font-size: 1.3rem;
-            color: var(--gray);
-            margin-bottom: 3rem;
+            color: var(--gray-600);
             line-height: 1.8;
+            max-width: 800px;
+            margin: 2rem auto 0;
+            position: relative;
         }
-
-        .hero-badges {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-        .badge {
-            padding: 0.6rem 1.5rem;
-            background: rgba(20, 184, 166, 0.05);
-            border: 1px solid var(--border);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn {
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: all 0.4s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        .btn-primary {
-            background: var(--primary);
-            color: var(--white);
-            box-shadow: 0 10px 25px rgba(20, 184, 166, 0.2);
-        }
-        .btn-secondary {
+        
+        /* Content Section */
+        .content-section {
+            padding: 6rem 3rem;
             background: var(--white);
-            color: var(--primary);
-            border: 2px solid var(--primary);
         }
-
-        /* Hero Visual & Cards */
-        .hero-card, .page-card, .tech-icon-box {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
-            transition: all 0.4s;
-        }
-        .hero-card {
-            padding: 3rem;
-            animation: float 6s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .tech-icons {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-        .tech-icon-box {
-            padding: 2rem 1.5rem;
-            text-align: center;
-        }
-        .tech-icon-box i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        .tech-icon-box p {
-            color: var(--dark);
-            font-weight: 600;
-        }
-
-        /* Stats Bar */
-        .stats-bar {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 4rem 3rem;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-        }
-        .stat-item text-align: center;
-        .stat-number {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        .stat-label { color: var(--gray); font-weight: 600; }
-
-        /* Explore Sections */
-        .page-links { padding: 8rem 3rem; }
-        .section-title { text-align: center; margin-bottom: 5rem; }
-        .section-badge {
-            display: inline-block;
-            padding: 0.6rem 1.8rem;
-            background: rgba(245, 158, 11, 0.1);
-            color: var(--gold);
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-            letter-spacing: 2px;
-        }
-        .section-title h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            color: var(--dark);
-            margin-bottom: 1.5rem;
-        }
-
-        .page-grid {
-            max-width: 1400px;
+        
+        .section-container {
+            max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
         }
-        .page-card {
-            padding: 3rem;
-            text-decoration: none;
+        
+        .story-content {
+            background: var(--white);
+            border: 2px solid var(--teal-200);
+            border-radius: 30px;
+            padding: 4rem;
+            margin-bottom: 6rem;
+            box-shadow: 0 10px 40px rgba(20, 184, 166, 0.1);
+            position: relative;
+            overflow: hidden;
         }
-        .page-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        
+        .story-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-teal), var(--primary-teal-light));
         }
-        .page-icon {
-            width: 90px; height: 90px;
-            background: var(--primary);
-            border-radius: 25px;
-            display: flex;
-            align-items: center; justify-content: center;
+        
+        .story-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--primary-teal);
             margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
         }
-        .page-icon i { font-size: 3rem; color: var(--white); }
-        .page-card h3 { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; color: var(--dark); margin-bottom: 1rem; }
-        .page-card p { color: var(--gray); line-height: 1.8; margin-bottom: 2rem; }
-        .page-arrow { color: var(--primary); font-weight: 700; display: flex; align-items: center; gap: 0.8rem; }
-
+        
+        .story-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-teal-light);
+        }
+        
+        .story-content p {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: var(--gray-700);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Values Section */
+        .values-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-teal);
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+        
+        .values-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-teal), var(--primary-teal-light));
+            border-radius: 2px;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .value-card {
+            background: var(--white);
+            border: 2px solid var(--teal-200);
+            border-radius: 25px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-teal), var(--primary-teal-light));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+        
+        .value-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .value-card:hover {
+            background: var(--teal-50);
+            border-color: var(--primary-teal);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(20, 184, 166, 0.2);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-teal-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--white);
+            margin: 0 auto 2rem;
+            box-shadow: 0 8px 25px rgba(20, 184, 166, 0.3);
+            transition: all 0.4s;
+        }
+        
+        .value-card:hover .value-icon {
+            transform: rotateY(360deg);
+            box-shadow: 0 12px 35px rgba(20, 184, 166, 0.4);
+        }
+        
+        .value-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .value-card p {
+            color: var(--gray-600);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+        
         /* Footer */
         footer {
-            background: #F1F5F9;
+            background: linear-gradient(135deg, var(--teal-900) 0%, var(--primary-teal-dark) 100%);
             padding: 6rem 3rem 3rem;
-            border-top: 1px solid var(--border);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
         }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-teal-light), var(--accent-teal));
+        }
+        
         .footer-content {
-            max-width: 1400px; margin: 0 auto 4rem;
-            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
         }
-        .footer-about h3 { font-family: 'Orbitron', sans-serif; color: var(--primary); margin-bottom: 1.5rem; }
-        .footer-links h4 { color: var(--dark); margin-bottom: 1.5rem; }
-        .footer-links a { color: var(--gray); text-decoration: none; transition: all 0.3s; }
-        .footer-links a:hover { color: var(--primary); transform: translateX(5px); display: inline-block; }
-        .footer-bottom { text-align: center; color: var(--gray); border-top: 1px solid var(--border); padding-top: 3rem; }
-
-        /* WhatsApp Button */
-        .whatsapp-button {
-            position: fixed; bottom: 30px; right: 30px;
-            width: 70px; height: 70px;
-            background: #25D366;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
-            z-index: 1000;
-            color: white; font-size: 2rem;
+        
+        .footer-about h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .footer-about p {
+            color: var(--teal-100);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .social-links { 
+            display: flex; 
+            gap: 1rem; 
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
             text-decoration: none;
+            transition: all 0.3s;
         }
-
-        /* Mobile Adjustments */
+        
+        .social-link:hover {
+            background: var(--white);
+            color: var(--primary-teal);
+            transform: translateY(-5px);
+            border-color: var(--white);
+        }
+        
+        .footer-links h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .footer-links ul { 
+            list-style: none; 
+        }
+        
+        .footer-links li { 
+            margin-bottom: 1rem; 
+        }
+        
+        .footer-links a {
+            color: var(--teal-100);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+        
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            color: var(--teal-100);
+        }
+        
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        
+        .whatsapp-button {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.6);
+        }
+        
+        .whatsapp-button i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 85px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--white);
+            color: var(--primary-teal);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            white-space: nowrap;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid var(--primary-teal);
+            box-shadow: 0 5px 20px rgba(20, 184, 166, 0.2);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-button:hover .whatsapp-tooltip {
+            opacity: 1;
+            right: 90px;
+        }
+        
+        .whatsapp-ripple {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid #25D366;
+            animation: ripple 1.5s infinite;
+            opacity: 0;
+        }
+        
+        .whatsapp-ripple:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .hero-container { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 2.5rem; }
-            .nav-menu { display: none; }
-            .mobile-toggle { display: block; }
-            .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 2rem 1.5rem; }
-            .footer-content { grid-template-columns: 1fr; }
+            .nav-container { 
+                padding: 0 1.5rem; 
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 90px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(30px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateX(-100%);
+                transition: transform 0.4s;
+                z-index: 999;
+                max-height: calc(100vh - 90px);
+                overflow-y: auto;
+                border-bottom: 2px solid var(--teal-200);
+                box-shadow: 0 10px 30px rgba(20, 184, 166, 0.1);
+            }
+            
+            .nav-menu.active { 
+                transform: translateX(0); 
+            }
+            
+            .mobile-toggle { 
+                display: block; 
+            }
+            
+            .page-header { 
+                padding: 8rem 1.5rem 4rem; 
+            }
+            
+            .page-header h1 { 
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
+            .page-header p { 
+                font-size: 1.1rem; 
+            }
+            
+            .page-badge {
+                font-size: 0.8rem;
+                padding: 0.5rem 1.5rem;
+            }
+            
+            .content-section { 
+                padding: 4rem 1.5rem; 
+            }
+            
+            .story-content { 
+                padding: 2.5rem 2rem;
+                margin-bottom: 4rem;
+            }
+            
+            .story-content h2 {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .story-content p {
+                font-size: 1.05rem;
+                line-height: 1.8;
+            }
+            
+            .values-section-title {
+                font-size: 2rem;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .value-card {
+                padding: 2.5rem 2rem;
+            }
+            
+            .value-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+            
+            .value-card h3 { 
+                font-size: 1.3rem; 
+            }
+            
+            .value-card p { 
+                font-size: 0.95rem; 
+            }
+            
+            footer { 
+                padding: 4rem 1.5rem 2rem; 
+            }
+            
+            .footer-content { 
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .whatsapp-button {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .whatsapp-button i {
+                font-size: 1.75rem;
+            }
+            
+            .whatsapp-tooltip {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text { 
+                font-size: 1.2rem; 
+            }
+            
+            .logo-img { 
+                width: 45px; 
+                height: 45px; 
+            }
+            
+            .page-header h1 { 
+                font-size: 2rem; 
+            }
+            
+            .page-header p { 
+                font-size: 1rem; 
+            }
+            
+            .story-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .story-content h2 { 
+                font-size: 1.75rem; 
+            }
+            
+            .story-content p { 
+                font-size: 1rem; 
+            }
+            
+            .values-section-title {
+                font-size: 1.75rem;
+            }
         }
     </style>
 </head>
@@ -384,9 +825,9 @@
                 <span class="logo-text">INOVRIKSHA TECH</span>
             </a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
-                <li><a href="about.html">About Us</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="careers.html">Careers</a></li>
@@ -398,82 +839,77 @@
         </div>
     </nav>
     
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content animate">
-                <h1>Innovating from the Roots, Scaling to the Future</h1>
-                <p class="hero-subtitle">
-                    Transform your business with premium digital innovation, AI automation, 
-                    hospitality solutions, and cutting-edge technology that drives exponential growth.
+    <header class="page-header">
+        <div class="page-badge animate">WHO WE ARE</div>
+        <h1 class="animate">About Inovriksha Tech</h1>
+        <p class="animate">
+            Innovating from the roots, scaling to the future. We're a team of passionate 
+            technologists transforming businesses through cutting-edge digital solutions.
+        </p>
+    </header>
+    
+    <section class="content-section">
+        <div class="section-container">
+            <div class="story-content animate">
+                <h2>Our Story</h2>
+                <p>
+                    Founded with a vision to bridge the gap between traditional businesses and modern technology, 
+                    Inovriksha Tech has grown from a small startup to a trusted partner for companies seeking 
+                    digital transformation.
                 </p>
-                
-                <div class="hero-badges">
-                    <span class="badge"><i class="fas fa-award"></i> Award-Winning Solutions</span>
-                    <span class="badge"><i class="fas fa-shield-alt"></i> Enterprise Security</span>
-                </div>
-                
-                <div class="hero-cta">
-                    <a href="services.html" class="btn btn-primary">
-                        <span>Explore Services</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="contact.html" class="btn btn-secondary">
-                        <span>Get Consultation</span>
-                        <i class="fas fa-phone"></i>
-                    </a>
-                </div>
+                <p>
+                    Our name "Inovriksha" combines "Innovation" with "Vriksha" (Sanskrit for tree), symbolizing 
+                    our belief in strong roots and sustainable growth. Like a tree that grows from deep roots, 
+                    we build solutions that are grounded in solid fundamentals while reaching new heights of innovation.
+                </p>
+                <p>
+                    Today, we serve clients across industries including hospitality, e-commerce, healthcare, and 
+                    enterprise software, delivering solutions that drive measurable business results. Our team of 
+                    skilled developers, designers, and strategists work collaboratively to turn your vision into reality.
+                </p>
             </div>
             
-            <div class="hero-visual animate">
-                <div class="hero-card">
-                    <div class="tech-icons">
-                        <div class="tech-icon-box"><i class="fas fa-brain"></i><p>AI & ML</p></div>
-                        <div class="tech-icon-box"><i class="fas fa-cloud"></i><p>Cloud</p></div>
-                        <div class="tech-icon-box"><i class="fas fa-mobile-alt"></i><p>Mobile</p></div>
-                        <div class="tech-icon-box"><i class="fas fa-robot"></i><p>Automation</p></div>
-                        <div class="tech-icon-box"><i class="fas fa-shield-alt"></i><p>Security</p></div>
-                        <div class="tech-icon-box"><i class="fas fa-chart-line"></i><p>Analytics</p></div>
-                    </div>
+            <h2 class="values-section-title animate">
+                Our Core Values
+            </h2>
+            
+            <div class="values-grid">
+                <div class="value-card animate">
+                    <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>Innovation</h3>
+                    <p>We constantly explore new technologies and approaches to deliver cutting-edge solutions that give you a competitive advantage.</p>
+                </div>
+                
+                <div class="value-card animate">
+                    <div class="value-icon"><i class="fas fa-star"></i></div>
+                    <h3>Excellence</h3>
+                    <p>We're committed to delivering the highest quality in everything we do, from code to customer service.</p>
+                </div>
+                
+                <div class="value-card animate">
+                    <div class="value-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>Partnership</h3>
+                    <p>Your success is our success. We build long-term relationships based on trust, transparency, and mutual growth.</p>
+                </div>
+                
+                <div class="value-card animate">
+                    <div class="value-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Agility</h3>
+                    <p>We adapt quickly to changing requirements and market conditions, ensuring your solutions stay relevant.</p>
+                </div>
+                
+                <div class="value-card animate">
+                    <div class="value-icon"><i class="fas fa-users"></i></div>
+                    <h3>Collaboration</h3>
+                    <p>We believe in the power of teamwork, both within our company and with our clients.</p>
+                </div>
+                
+                <div class="value-card animate">
+                    <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Integrity</h3>
+                    <p>We operate with honesty, transparency, and strong ethical principles in all our business dealings.</p>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <div class="stats-bar animate">
-        <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">Projects Delivered</div></div>
-        <div class="stat-item"><div class="stat-number">80+</div><div class="stat-label">Happy Clients</div></div>
-        <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">Support</div></div>
-        <div class="stat-item"><div class="stat-number">10+</div><div class="stat-label">Years Exp</div></div>
-    </div>
-    
-    <section class="page-links">
-        <div class="section-title animate">
-            <div class="section-badge">DISCOVER MORE</div>
-            <h2>Explore Our World</h2>
-            <p>Navigate through our comprehensive ecosystem of digital solutions</p>
-        </div>
-        
-        <div class="page-grid">
-            <a href="services.html" class="page-card animate">
-                <div class="page-icon"><i class="fas fa-code"></i></div>
-                <h3>Our Services</h3>
-                <p>Explore AI automation, hospitality tech, and more designed for growth.</p>
-                <div class="page-arrow">View Services <i class="fas fa-arrow-right"></i></div>
-            </a>
-            
-            <a href="about.html" class="page-card animate">
-                <div class="page-icon"><i class="fas fa-building"></i></div>
-                <h3>About Us</h3>
-                <p>Learn about our journey, values, and the team behind Inovriksha Tech.</p>
-                <div class="page-arrow">Learn More <i class="fas fa-arrow-right"></i></div>
-            </a>
-            
-            <a href="portfolio.html" class="page-card animate">
-                <div class="page-icon"><i class="fas fa-briefcase"></i></div>
-                <h3>Portfolio</h3>
-                <p>Discover our success stories and digital transformations.</p>
-                <div class="page-arrow">View Work <i class="fas fa-arrow-right"></i></div>
-            </a>
         </div>
     </section>
     
@@ -481,45 +917,123 @@
         <div class="footer-content">
             <div class="footer-about">
                 <h3>Inovriksha Tech</h3>
-                <p>Innovating from the roots, scaling to the future. We help businesses transform through strategic technology solutions.</p>
+                <p>At Inovriksha Tech, we believe in innovation, creativity, and growth from the roots. We help businesses transform through cutting-edge technology and strategic digital solutions.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/company/inovriksha-tech-pvt-ltd/" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.instagram.com/inovriksha_tech/" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/InovrikshaTech" target="_blank" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
             </div>
+            
             <div class="footer-links">
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="about.html">About Us</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
                 </ul>
             </div>
+            
             <div class="footer-links">
-                <h4>Support</h4>
+                <h4>Services</h4>
                 <ul>
-                    <li><a href="careers.html">Careers</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="services.html">Web Development</a></li>
+                    <li><a href="services.html">AI & Automation</a></li>
+                    <li><a href="services.html">E-Commerce</a></li>
+                    <li><a href="services.html">Hospitality Tech</a></li>
                 </ul>
             </div>
+            
             <div class="footer-links">
                 <h4>Contact</h4>
                 <ul>
-                    <li>+91 87635 47063</li>
-                    <li>Bhubaneswar, Odisha</li>
+                    <li><a href="mailto:contact@inovriksha.com">contact@inovriksha.com</a></li>
+                    <li><a href="tel:+918763547063">+91 87635 47063</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Get Quote</a></li>
                 </ul>
             </div>
         </div>
+        
         <div class="footer-bottom">
-            <p>&copy; 2026 Inovriksha Tech Pvt Ltd. All Rights Reserved.</p>
+            <p>&copy; 2026 Inovriksha Tech Pvt Ltd. All Rights Reserved. | Innovating from the Roots, Scaling to the Future</p>
         </div>
     </footer>
     
-    <a href="https://wa.me/918763547063" class="whatsapp-button" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
+    <!-- Floating WhatsApp Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/918763547063?text=Hi%2C%20I%27m%20interested%20in%20your%20services" target="_blank" class="whatsapp-button" aria-label="Chat on WhatsApp">
+            <div class="whatsapp-ripple"></div>
+            <div class="whatsapp-ripple"></div>
+            <i class="fab fa-whatsapp"></i>
+            <span class="whatsapp-tooltip">Chat with us on WhatsApp!</span>
+        </a>
+    </div>
+    
     <script>
+        // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) navbar.classList.add('scrolled');
-            else navbar.classList.remove('scrolled');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+        
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.animate').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
         });
     </script>
 </body>
