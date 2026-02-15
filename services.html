@@ -220,154 +220,137 @@
             margin: 0 auto;
         }
         
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
+        /* Accordion Styles */
+        .service-accordion {
+            margin-bottom: 2rem;
         }
         
-        @media (max-width: 900px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
+        .accordion-header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--primary-light);
+            border-radius: 20px;
+            padding: 2rem 2.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(13, 148, 136, 0.1);
+        }
+        
+        .accordion-header:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(13, 148, 136, 0.2);
+            border-color: var(--primary);
+        }
+        
+        .accordion-header.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(13, 148, 136, 0.3);
+        }
+        
+        .accordion-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.3s;
+        }
+        
+        .accordion-header.active .accordion-title {
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .accordion-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+        
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+            color: white;
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            padding: 0 2.5rem;
+        }
+        
+        .accordion-content.active {
+            max-height: 5000px;
+            padding: 3rem 2.5rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
         }
         
         .service-card {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 255, 255, 0.9);
-            border-radius: 25px;
-            padding: 3rem 2.5rem;
-            transition: all 0.5s ease;
-            box-shadow: 0 15px 40px rgba(13, 148, 136, 0.12);
-            position: relative;
-            overflow: hidden;
+            border: 2px solid rgba(13, 148, 136, 0.2);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(13, 148, 136, 0.08);
             display: flex;
             flex-direction: column;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(13, 148, 136, 0.1), transparent);
-            transition: left 0.8s;
-        }
-        
-        .service-card:hover::before {
-            left: 100%;
+            align-items: center;
+            text-align: center;
         }
         
         .service-card:hover {
-            transform: translateY(-15px);
-            border-color: var(--primary-light);
-            box-shadow: 0 35px 80px rgba(13, 148, 136, 0.25);
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(13, 148, 136, 0.2);
         }
         
         .service-icon {
-            width: 90px;
-            height: 90px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 20px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 2rem;
-            transition: all 0.5s;
-            flex-shrink: 0;
+            margin-bottom: 1.5rem;
+            transition: all 0.4s;
         }
         
         .service-card:hover .service-icon {
-            transform: rotate(10deg) scale(1.1);
-            box-shadow: 0 15px 40px rgba(13, 148, 136, 0.5);
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 35px rgba(13, 148, 136, 0.4);
         }
         
         .service-icon i {
-            font-size: 3rem;
+            font-size: 2rem;
             color: var(--white);
         }
         
         .service-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.75rem;
-            color: var(--text-dark);
-            margin-bottom: 1.25rem;
-            transition: all 0.3s;
-            line-height: 1.3;
-        }
-        
-        .service-card:hover h3 {
-            color: var(--primary);
-        }
-        
-        .service-description {
-            color: var(--gray);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            font-size: 1.05rem;
-            flex-grow: 0;
-        }
-        
-        .service-features {
-            list-style: none;
-            margin-bottom: 2rem;
-            flex-grow: 1;
-        }
-        
-        .service-features li {
-            padding: 0.875rem 0;
-            color: var(--gray);
-            display: flex;
-            align-items: flex-start;
-            gap: 0.875rem;
-            border-bottom: 1px solid rgba(13, 148, 136, 0.1);
-            font-size: 0.975rem;
-            line-height: 1.6;
-        }
-        
-        .service-features li:last-child {
-            border-bottom: none;
-        }
-        
-        .service-features li i {
-            color: var(--primary);
-            margin-top: 0.2rem;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-        
-        .service-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            padding: 1.1rem 2.25rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
             font-weight: 700;
-            font-size: 0.975rem;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(13, 148, 136, 0.4);
-            margin-top: auto;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
         }
         
-        .service-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(13, 148, 136, 0.6);
-        }
-        
-        .service-btn i {
-            transition: transform 0.3s;
-        }
-        
-        .service-btn:hover i {
-            transform: translateX(5px);
+        .service-card p {
+            color: var(--gray);
+            font-size: 0.875rem;
+            line-height: 1.6;
         }
         
         /* Footer */
@@ -529,44 +512,6 @@
             color: white;
         }
         
-        .whatsapp-tooltip {
-            position: absolute;
-            right: 85px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: white;
-            color: var(--primary);
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            white-space: nowrap;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border: 2px solid var(--primary);
-            box-shadow: 0 5px 20px rgba(13, 148, 136, 0.2);
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s;
-        }
-        
-        .whatsapp-button:hover .whatsapp-tooltip {
-            opacity: 1;
-            right: 90px;
-        }
-        
-        .whatsapp-ripple {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 2px solid #25D366;
-            animation: ripple 1.5s infinite;
-            opacity: 0;
-        }
-        
-        .whatsapp-ripple:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-        
         @keyframes pulse {
             0%, 100% {
                 transform: scale(1);
@@ -576,64 +521,23 @@
             }
         }
         
-        @keyframes ripple {
-            0% {
-                transform: scale(1);
-                opacity: 0.5;
-            }
-            100% {
-                transform: scale(1.8);
-                opacity: 0;
-            }
-        }
-        
         /* Responsive Design */
         @media (max-width: 1200px) {
             .services-grid {
-                gap: 2.5rem;
-            }
-            
-            .service-card {
-                padding: 2.75rem 2.25rem;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.75rem;
             }
         }
         
         @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 3rem;
-            }
-        }
-        
-        @media (max-width: 900px) {
-            .page-header h1 {
-                font-size: 3.5rem;
-            }
-            
-            .services-section {
-                padding: 5rem 2.5rem;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-            
-            .service-card {
-                padding: 2.5rem 2rem;
-            }
-            
-            .service-icon {
-                width: 85px;
-                height: 85px;
-            }
-            
-            .service-icon i {
-                font-size: 2.75rem;
-            }
-            
-            .service-card h3 {
-                font-size: 1.65rem;
             }
         }
         
@@ -692,51 +596,51 @@
                 padding: 4rem 1.5rem; 
             }
             
+            .accordion-header {
+                padding: 1.5rem 1.75rem;
+                border-radius: 15px;
+            }
+            
+            .accordion-title {
+                font-size: 1.5rem;
+            }
+            
+            .accordion-icon {
+                font-size: 1.25rem;
+            }
+            
+            .accordion-content {
+                padding: 0 1.75rem;
+            }
+            
+            .accordion-content.active {
+                padding: 2.5rem 1.75rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
             .service-card {
-                padding: 2.25rem 1.75rem;
-                border-radius: 20px;
+                padding: 1.75rem 1.5rem;
             }
             
             .service-icon {
-                width: 75px;
-                height: 75px;
-                margin-bottom: 1.75rem;
-                border-radius: 18px;
+                width: 65px;
+                height: 65px;
             }
             
-            .service-icon i { 
-                font-size: 2.5rem; 
+            .service-icon i {
+                font-size: 1.85rem;
             }
             
-            .service-card h3 { 
-                font-size: 1.5rem;
-                margin-bottom: 1.125rem;
+            .service-card h3 {
+                font-size: 1.05rem;
             }
             
-            .service-description { 
-                font-size: 1rem;
-                margin-bottom: 1.75rem;
-                line-height: 1.7;
-            }
-            
-            .service-features {
-                margin-bottom: 1.75rem;
-            }
-            
-            .service-features li {
-                padding: 0.75rem 0;
-                font-size: 0.9375rem;
-                gap: 0.75rem;
-            }
-            
-            .service-features li i {
-                font-size: 0.9375rem;
-            }
-            
-            .service-btn {
-                padding: 1rem 2rem;
-                font-size: 0.9375rem;
-                width: 100%;
+            .service-card p {
+                font-size: 0.85rem;
             }
             
             footer { 
@@ -766,10 +670,6 @@
             
             .whatsapp-button i {
                 font-size: 1.75rem;
-            }
-            
-            .whatsapp-tooltip {
-                display: none;
             }
         }
         
@@ -807,55 +707,45 @@
                 padding: 3.5rem 1.25rem;
             }
             
-            .services-grid {
-                gap: 2rem;
+            .accordion-header {
+                padding: 1.25rem 1.5rem;
+            }
+            
+            .accordion-title {
+                font-size: 1.25rem;
+            }
+            
+            .accordion-icon {
+                font-size: 1.125rem;
+            }
+            
+            .accordion-content {
+                padding: 0 1.5rem;
+            }
+            
+            .accordion-content.active {
+                padding: 2rem 1.5rem;
             }
             
             .service-card {
-                padding: 2rem 1.5rem;
-                border-radius: 18px;
+                padding: 1.5rem 1.25rem;
             }
             
             .service-icon {
-                width: 70px;
-                height: 70px;
-                margin-bottom: 1.5rem;
-                border-radius: 16px;
+                width: 60px;
+                height: 60px;
             }
             
             .service-icon i {
-                font-size: 2.25rem;
+                font-size: 1.75rem;
             }
             
-            .service-card h3 { 
-                font-size: 1.35rem;
-                margin-bottom: 1rem;
+            .service-card h3 {
+                font-size: 1rem;
             }
             
-            .service-description {
-                font-size: 0.95rem;
-                margin-bottom: 1.5rem;
-            }
-            
-            .service-features {
-                margin-bottom: 1.5rem;
-            }
-            
-            .service-features li {
-                padding: 0.625rem 0;
-                font-size: 0.875rem;
-                gap: 0.625rem;
-            }
-            
-            .service-features li i {
-                font-size: 0.875rem;
-                margin-top: 0.15rem;
-            }
-            
-            .service-btn {
-                padding: 0.9375rem 1.75rem;
-                font-size: 0.875rem;
-                gap: 0.625rem;
+            .service-card p {
+                font-size: 0.8125rem;
             }
             
             .whatsapp-button {
@@ -865,33 +755,6 @@
             
             .whatsapp-button i {
                 font-size: 1.5rem;
-            }
-        }
-        
-        @media (max-width: 360px) {
-            .page-header h1 {
-                font-size: 2rem;
-            }
-            
-            .service-card {
-                padding: 1.75rem 1.25rem;
-            }
-            
-            .service-icon {
-                width: 65px;
-                height: 65px;
-            }
-            
-            .service-icon i {
-                font-size: 2rem;
-            }
-            
-            .service-card h3 {
-                font-size: 1.25rem;
-            }
-            
-            .service-features li {
-                font-size: 0.8125rem;
             }
         }
     </style>
@@ -932,133 +795,251 @@
     
     <section class="services-section">
         <div class="section-container">
-            <div class="services-grid">
-                <div class="service-card reveal">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Web Development & SEO</h3>
-                    <p class="service-description">
-                        Build stunning, high-performance websites with integrated SEO strategies 
-                        that drive traffic and convert visitors into customers.
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Custom responsive website design & development</li>
-                        <li><i class="fas fa-check-circle"></i> Advanced SEO optimization & content strategy</li>
-                        <li><i class="fas fa-check-circle"></i> Performance optimization & speed enhancement</li>
-                        <li><i class="fas fa-check-circle"></i> E-commerce integrations & payment gateways</li>
-                        <li><i class="fas fa-check-circle"></i> Regular maintenance & technical support</li>
-                    </ul>
-                    <a href="contact.html" class="service-btn">
-                        Get Started <i class="fas fa-arrow-right"></i>
-                    </a>
+            
+            <!-- Hospitality Management Support -->
+            <div class="service-accordion reveal">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h2 class="accordion-title">Hospitality Management Support</h2>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
                 </div>
-                
-                <div class="service-card reveal">
-                    <div class="service-icon">
-                        <i class="fas fa-shopping-cart"></i>
+                <div class="accordion-content">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-hotel"></i></div>
+                            <h3>Hotel & Villa Website Setup</h3>
+                            <p>Professional website design with integrated booking systems</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-globe"></i></div>
+                            <h3>Online Visibility & SEO</h3>
+                            <p>Google Travel integration and booking platform listings</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fab fa-whatsapp"></i></div>
+                            <h3>Guest Communication Automation</h3>
+                            <p>WhatsApp automation for seamless guest engagement</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-palette"></i></div>
+                            <h3>Digital Branding & Social Media</h3>
+                            <p>Complete branding and social media management</p>
+                        </div>
                     </div>
-                    <h3>E-Commerce Operations</h3>
-                    <p class="service-description">
-                        Complete e-commerce solutions from store setup to order fulfillment, 
-                        helping you sell more and manage operations efficiently.
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Full store setup on Shopify, WooCommerce, Magento</li>
-                        <li><i class="fas fa-check-circle"></i> Product catalog management & optimization</li>
-                        <li><i class="fas fa-check-circle"></i> Payment gateway & shipping integration</li>
-                        <li><i class="fas fa-check-circle"></i> Inventory management systems</li>
-                        <li><i class="fas fa-check-circle"></i> Order processing & customer service automation</li>
-                    </ul>
-                    <a href="contact.html" class="service-btn">
-                        Get Started <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                
-                <div class="service-card reveal">
-                    <div class="service-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>AI & Automation</h3>
-                    <p class="service-description">
-                        Leverage artificial intelligence and automation to streamline operations, 
-                        reduce costs, and unlock new possibilities for your business.
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> AI chatbots & virtual assistants</li>
-                        <li><i class="fas fa-check-circle"></i> Process automation & workflow optimization</li>
-                        <li><i class="fas fa-check-circle"></i> Machine learning model development</li>
-                        <li><i class="fas fa-check-circle"></i> Intelligent data processing & analysis</li>
-                        <li><i class="fas fa-check-circle"></i> Custom AI solutions for specific needs</li>
-                    </ul>
-                    <a href="contact.html" class="service-btn">
-                        Get Started <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                
-                <div class="service-card reveal">
-                    <div class="service-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>ERP & Cloud Solutions</h3>
-                    <p class="service-description">
-                        Implement powerful ERP systems and cloud infrastructure to unify 
-                        operations, improve efficiency, and scale your business seamlessly.
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Custom ERP implementation & integration</li>
-                        <li><i class="fas fa-check-circle"></i> Cloud migration & infrastructure setup</li>
-                        <li><i class="fas fa-check-circle"></i> Business process management systems</li>
-                        <li><i class="fas fa-check-circle"></i> Data security & backup solutions</li>
-                        <li><i class="fas fa-check-circle"></i> System training & ongoing support</li>
-                    </ul>
-                    <a href="contact.html" class="service-btn">
-                        Get Started <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                
-                <div class="service-card reveal">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Data & Analytics</h3>
-                    <p class="service-description">
-                        Turn data into actionable insights with advanced analytics, visualization, 
-                        and business intelligence solutions that drive informed decisions.
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Business intelligence & reporting dashboards</li>
-                        <li><i class="fas fa-check-circle"></i> Data warehousing & ETL processes</li>
-                        <li><i class="fas fa-check-circle"></i> Predictive analytics & forecasting</li>
-                        <li><i class="fas fa-check-circle"></i> Custom data visualization solutions</li>
-                        <li><i class="fas fa-check-circle"></i> Real-time monitoring & alerting systems</li>
-                    </ul>
-                    <a href="contact.html" class="service-btn">
-                        Get Started <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                
-                <div class="service-card reveal">
-                    <div class="service-icon">
-                        <i class="fas fa-hotel"></i>
-                    </div>
-                    <h3>Hospitality Management</h3>
-                    <p class="service-description">
-                        Comprehensive technology solutions for hotels, restaurants, and hospitality 
-                        businesses to enhance guest experiences and operations.
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Property management systems (PMS)</li>
-                        <li><i class="fas fa-check-circle"></i> Online booking & reservation platforms</li>
-                        <li><i class="fas fa-check-circle"></i> Point-of-sale (POS) systems</li>
-                        <li><i class="fas fa-check-circle"></i> Guest experience & CRM solutions</li>
-                        <li><i class="fas fa-check-circle"></i> Revenue management & analytics</li>
-                    </ul>
-                    <a href="contact.html" class="service-btn">
-                        Get Started <i class="fas fa-arrow-right"></i>
-                    </a>
                 </div>
             </div>
+            
+            <!-- E-Commerce Services -->
+            <div class="service-accordion reveal">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h2 class="accordion-title">E-Commerce Services</h2>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-boxes"></i></div>
+                            <h3>Product Listing & Catalog Management</h3>
+                            <p>Complete catalog setup and inventory synchronization</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
+                            <h3>Order Management & Automation</h3>
+                            <p>Automated order processing and customer support</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-store"></i></div>
+                            <h3>End-to-End E-commerce Handling</h3>
+                            <p>Complete store management from setup to operations</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                            <h3>E-commerce Growth & Optimization</h3>
+                            <p>Performance optimization and conversion strategies</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social & Communication Services -->
+            <div class="service-accordion reveal">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h2 class="accordion-title">Social & Communication Services</h2>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-share-alt"></i></div>
+                            <h3>Social Media Management</h3>
+                            <p>Strategy, content creation, and community management</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fab fa-google"></i></div>
+                            <h3>Google My Business Setup</h3>
+                            <p>GMB optimization for local search visibility</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-headset"></i></div>
+                            <h3>Customer Support Services</h3>
+                            <p>AI + Human hybrid support for 24/7 service</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- No-Code & Workflow Development -->
+            <div class="service-accordion reveal">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h2 class="accordion-title">No-Code & Workflow Development</h2>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <h3>AppSheet Development</h3>
+                            <p>No-code apps for rapid business solution deployment</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-code-branch"></i></div>
+                            <h3>AppScript Development</h3>
+                            <p>Google Workspace automation and custom integrations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ERP & Cloud Solutions -->
+            <div class="service-accordion reveal">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h2 class="accordion-title">ERP & Cloud Solutions</h2>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-server"></i></div>
+                            <h3>Frappe / ERPNext Development</h3>
+                            <p>Custom ERP implementation for business management</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-cloud"></i></div>
+                            <h3>Cloud Setup & Management</h3>
+                            <p>Infrastructure setup, migration, and management</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                            <h3>IT Consulting & Tech Support</h3>
+                            <p>Expert technology consulting and ongoing support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI, Automation & Smart Solutions -->
+            <div class="service-accordion reveal">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h2 class="accordion-title">AI, Automation & Smart Solutions</h2>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-robot"></i></div>
+                            <h3>AI Chatbot Development</h3>
+                            <p>Intelligent chatbots for customer service and engagement</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-users-cog"></i></div>
+                            <h3>AI HRMS Bot</h3>
+                            <p>AI-powered employee management and HR automation</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fab fa-whatsapp"></i></div>
+                            <h3>WhatsApp Automation</h3>
+                            <p>Business process automation through WhatsApp</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-file-excel"></i></div>
+                            <h3>Excel Automation</h3>
+                            <p>Advanced automation and macro development</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                            <h3>Business Process Automation</h3>
+                            <p>End-to-end workflow automation solutions</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-envelope-open-text"></i></div>
+                            <h3>Email Marketing Automation</h3>
+                            <p>Automated campaigns and customer nurturing</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-bullseye"></i></div>
+                            <h3>Performance Marketing</h3>
+                            <p>Data-driven campaigns for ROI optimization</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-user-friends"></i></div>
+                            <h3>CRM Integration</h3>
+                            <p>Seamless CRM system integration and customization</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-chart-bar"></i></div>
+                            <h3>Data Analytics & Reporting</h3>
+                            <p>Advanced analytics and automated dashboards</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Core Digital & Development Services -->
+            <div class="service-accordion reveal">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h2 class="accordion-title">Core Digital & Development Services</h2>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
+                            <h3>Digital Marketing</h3>
+                            <p>Comprehensive PPC and social media advertising</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-search"></i></div>
+                            <h3>Search Engine Optimization</h3>
+                            <p>Technical and content SEO for rankings growth</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-code"></i></div>
+                            <h3>Website Design & Development</h3>
+                            <p>Custom responsive websites with modern tech</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <h3>Mobile App Development</h3>
+                            <p>Native and cross-platform mobile applications</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-desktop"></i></div>
+                            <h3>Custom Software Development</h3>
+                            <p>Tailored solutions for specific business needs</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+                            <h3>UI/UX Design</h3>
+                            <p>User-centered design for exceptional experiences</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-palette"></i></div>
+                            <h3>Branding & Creative Design</h3>
+                            <p>Complete brand identity and visual assets</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </section>
     
@@ -1103,7 +1084,7 @@
             <div class="footer-links">
                 <h4>Contact</h4>
                 <ul>
-                    <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dbb2b5bdb49bb2b5b4ada9b2b0a8b3baafbeb8b3f5b8b4b6">[email&#160;protected]</a></li>
+                    <li><i class="fas fa-envelope"></i> info@inovrikshatech.com</li>
                     <li><i class="fas fa-phone-alt"></i> +91 87635 47063</li>
                     <li><i class="fas fa-map-marker-alt"></i> Bhubaneswar, Odisha</li>
                 </ul>
@@ -1121,15 +1102,12 @@
     
     <!-- Floating WhatsApp Button -->
     <div class="whatsapp-float">
-        <a href="https://wa.me/918763547063?text=Hi%2C%20I%27m%20interested%20in%20your%20services" target="_blank" class="whatsapp-button" aria-label="Chat on WhatsApp">
-            <div class="whatsapp-ripple"></div>
-            <div class="whatsapp-ripple"></div>
+        <a href="https://wa.me/918763547063?text=Hi%2C%20I%27m%20interested%20in%20your%20services" target="_blank" class="whatsapp-button">
             <i class="fab fa-whatsapp"></i>
-            <span class="whatsapp-tooltip">Chat with us on WhatsApp!</span>
         </a>
     </div>
     
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Scroll Progress Bar
         window.addEventListener('scroll', () => {
             const scrolled = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
@@ -1169,7 +1147,39 @@
             });
         });
         
+        // Accordion toggle function
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const allHeaders = document.querySelectorAll('.accordion-header');
+            const allContents = document.querySelectorAll('.accordion-content');
+            
+            // Close all other accordions
+            allHeaders.forEach(h => {
+                if (h !== header) {
+                    h.classList.remove('active');
+                }
+            });
+            allContents.forEach(c => {
+                if (c !== content) {
+                    c.classList.remove('active');
+                }
+            });
+            
+            // Toggle current accordion
+            header.classList.toggle('active');
+            content.classList.toggle('active');
+        }
+        
         // Reveal animations on scroll
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(e => { 
                 if(e.isIntersecting) {
+                    e.target.classList.add('active'); 
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.reveal').forEach(r => revealObserver.observe(r));
+    </script>
+</body>
+</html>
