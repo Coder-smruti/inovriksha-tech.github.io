@@ -1416,7 +1416,6 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
     
     <script>
         // Firebase Configuration
@@ -1433,21 +1432,20 @@
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
-        const storage = firebase.storage();
         
         let currentUser = null;
         let authMode = 'login';
         let quill;
         let uploadedImageFile = null;
         
-        // Sample blog images from Unsplash
+        // Sample blog images from Unsplash (using direct image URLs)
         const sampleImages = [
-            'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop', // AI/Tech
-            'https://images.unsplash.com/photo-1556155092-8707de31f9c4?w=800&h=600&fit=crop', // E-commerce
-            'https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&h=600&fit=crop', // Business/Growth
-            'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop', // Cloud/Tech
-            'https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&h=600&fit=crop', // Innovation
-            'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop'  // Digital
+            'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&auto=format&fit=crop', // AI/Tech
+            'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&auto=format&fit=crop', // E-commerce/Shopping
+            'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop', // Business/Growth
+            'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&auto=format&fit=crop', // Cloud/Tech
+            'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&auto=format&fit=crop', // Digital Marketing
+            'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop'  // Remote Work/Team
         ];
         
         // Sample posts with images
@@ -1577,33 +1575,48 @@
         
         // Auth state observer
         auth.onAuthStateChanged(async (user) => {
-            if (user) {
-                const userDoc = await db.collection('users').doc(user.uid).get();
-                if (userDoc.exists) {
-                    currentUser = {
-                        uid: user.uid,
-                        email: user.email,
-                        ...userDoc.data()
-                    };
+            try {
+                if (user) {
+                    const userDoc = await db.collection('users').doc(user.uid).get();
+                    if (userDoc.exists) {
+                        currentUser = {
+                            uid: user.uid,
+                            email: user.email,
+                            ...userDoc.data()
+                        };
+                    } else {
+                        const name = user.email.split('@')[0];
+                        const initials = name.substring(0, 2).toUpperCase();
+                        currentUser = {
+                            uid: user.uid,
+                            email: user.email,
+                            name: name,
+                            initials: initials
+                        };
+                    }
+                    updateUserMenu();
                 } else {
-                    const name = user.email.split('@')[0];
-                    const initials = name.substring(0, 2).toUpperCase();
-                    currentUser = {
-                        uid: user.uid,
-                        email: user.email,
-                        name: name,
-                        initials: initials
-                    };
+                    currentUser = null;
+                    updateUserMenu();
                 }
-                updateUserMenu();
-            } else {
-                currentUser = null;
-                updateUserMenu();
+                
+                // Add sample posts on first load
+                await addSamplePostsIfNeeded();
+                await loadPosts();
+                
+                // Hide loading overlay
+                document.getElementById('loadingOverlay').classList.add('hidden');
+            } catch (error) {
+                console.error('Error in auth observer:', error);
+                document.getElementById('loadingOverlay').classList.add('hidden');
+                
+                // Still try to load posts even if there's an error
+                try {
+                    await loadPosts();
+                } catch (e) {
+                    console.error('Error loading posts:', e);
+                }
             }
-            
-            // Add sample posts on first load
-            await addSamplePostsIfNeeded();
-            await loadPosts();
         });
         
         // Add sample posts if database is empty
@@ -1799,7 +1812,10 @@
         document.getElementById('postForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            if (!currentUser) return;
+            if (!currentUser) {
+                alert('Please log in to create a post');
+                return;
+            }
             
             const title = document.getElementById('postTitle').value;
             const content = quill.root.innerHTML;
@@ -1815,16 +1831,18 @@
             
             submitBtn.disabled = true;
             submitBtn.textContent = 'Publishing...';
-            document.getElementById('loadingOverlay').classList.remove('hidden');
             
             try {
                 let imageUrl = '';
                 
-                // Upload image if exists
+                // Convert image to base64 if exists
                 if (uploadedImageFile) {
-                    const imageRef = storage.ref().child(`blog-images/${Date.now()}_${uploadedImageFile.name}`);
-                    const snapshot = await imageRef.put(uploadedImageFile);
-                    imageUrl = await snapshot.ref.getDownloadURL();
+                    imageUrl = await new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.onload = (e) => resolve(e.target.result);
+                        reader.onerror = reject;
+                        reader.readAsDataURL(uploadedImageFile);
+                    });
                 }
                 
                 // Create excerpt (first 150 characters of plain text)
@@ -1846,12 +1864,12 @@
                 
                 closePostModal();
                 await loadPosts();
+                alert('Post published successfully! 🎉');
             } catch (error) {
                 console.error('Error creating post:', error);
-                alert('Error creating post. Please try again.');
+                alert('Error creating post: ' + error.message);
             }
             
-            document.getElementById('loadingOverlay').classList.add('hidden');
             submitBtn.disabled = false;
             submitBtn.textContent = 'Publish Post';
         });
